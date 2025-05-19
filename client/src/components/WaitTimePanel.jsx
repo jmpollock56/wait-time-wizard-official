@@ -1,8 +1,21 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect } from "react";
 import '../style/WaitTimePanel.css'
 
+
 export default function WaitTimePanel({ ride }){
-    
+    const [rideData, setRideData] = useState()
+    const [panelClass, setPanelClass] = useState()
+
+    /**
+     * The ride panel CSS should change whenever the the wait time changes. So..
+     * 1. Check if ride has updated (useEffect)
+     * 2. If not, do nothing. If so, check whether the wait time has changed.
+     */
+
+    useEffect(() => {
+
+    },[ride])
+
     return (
         
         <div className="ride-card-normal">

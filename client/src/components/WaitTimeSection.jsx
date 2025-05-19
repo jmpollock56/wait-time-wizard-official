@@ -7,11 +7,14 @@ export default function WaitTimeSection({ park }) {
 
     useEffect(() => {
         const updateRides = () => {
+            console.log('section useEffect')
             if(park?.rides){
                 const sortedRides = park.rides
                 .slice()
                 .sort((a, b) => b.wait_time - a.wait_time)
                 setRides(sortedRides)
+
+                
             }
         }
         updateRides()

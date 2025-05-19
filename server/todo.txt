@@ -1,0 +1,16 @@
+What I want/need to do.
+
+- Add the 3 pills back below the ride name.
+  - Each ride should have 3 attributes based on [X] amount of attributes that will
+    be available to use whenever describing a ride.
+  - Will be used for filtering.
+  - Add to object being sent from the server.
+
+- Add animation whenever wait time changes. This will include the wait time itself 
+  AND the whole panel when it changes it's style based on the new wait time.
+
+- When the user refreshes the page, the park should be the same as before the refreshes.
+  - LocalStorage?
+
+- Use GSAP?
+
