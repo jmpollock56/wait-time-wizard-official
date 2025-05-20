@@ -41,17 +41,23 @@ function App() {
   useEffect(() => {
     socket.on("update-wait-times", (newWaitTimes) => {
       console.log("---- socket update -----");
-      console.log(newWaitTimes)
+      console.log(newWaitTimes);
       setWaitTimes(newWaitTimes);
 
-      const updatedPark = newWaitTimes.find((p) => p.id === selectedPark.id);
-      setSelectedPark(updatedPark)
+      const updatedSelectedPark = newWaitTimes.find(
+        (park) => park.id === selectedPark?.id
+      );
+      if (updatedSelectedPark) {
+        setSelectedPark(updatedSelectedPark);
+      }
     });
-  }, []);
 
-  useEffect(() => {
+    return () => {
+      socket.off("update-wait-times"); 
+    };
+  }, [selectedPark?.id]);
 
-  },[waitTimes])
+  useEffect(() => {}, [waitTimes]);
 
   function changeSelectedPark(id) {
     const newSelectedPark = waitTimes.find((park) => park.id === id);
