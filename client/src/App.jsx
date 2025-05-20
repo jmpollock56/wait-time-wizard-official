@@ -51,17 +51,17 @@ function App() {
         setSelectedPark(updatedSelectedPark);
       }
     });
-
+    
     return () => {
       socket.off("update-wait-times"); 
     };
   }, [selectedPark?.id]);
 
-  useEffect(() => {}, [waitTimes]);
 
   function changeSelectedPark(id) {
-    const newSelectedPark = waitTimes.find((park) => park.id === id);
+    const newSelectedPark = waitTimes.find((park) => park?.id === id);
     setSelectedPark(newSelectedPark);
+    console.log('selectedPark-change: ', selectedPark)
   }
 
   return (

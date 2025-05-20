@@ -21,10 +21,10 @@ export default function WaitTimePanel({ ride }) {
 
       <div className="ride-info">
         <div className="ride-name">{ride.name}</div>
-        <div class="tags">
-          <div class="tag">Rollercoaster</div>
-          <div class="tag">Thrill Ride</div>
-          <div class="tag">Heights</div>
+        <div className="tags">
+          <div className="tag">Rollercoaster</div>
+          <div className="tag">Thrill Ride</div>
+          <div className="tag">Heights</div>
         </div>
       </div>
       <div className="wait-time">
