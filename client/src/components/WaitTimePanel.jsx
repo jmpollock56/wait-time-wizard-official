@@ -6,8 +6,9 @@ export default function WaitTimePanel({ ride }) {
   const [rideData, setRideData] = useState(ride);
   const [panelClass, setPanelClass] = useState();
   const [waitTimeClass, setWaitTimeClass] = useState('')
-  const currentWaitTime = rideData.wait_time
+  const currentWaitTime = useRef(rideData.wait_time)
   const timeElement = useRef(null)
+  
 
   
  
@@ -20,8 +21,16 @@ export default function WaitTimePanel({ ride }) {
    */
 
   useEffect(() => {
-    setRideData(ride)
+    
 
+    if(rideData.wait_time != currentWaitTime.current){
+      console.log(`${rideData.name} wait time changed`)
+      console.log(rideData.wait_time, currentWaitTime.current)
+    }
+
+    currentWaitTime.current = rideData.wait_time
+    setRideData(ride)
+    
   },[ride])
   
   
@@ -41,7 +50,7 @@ export default function WaitTimePanel({ ride }) {
         </div>
       </div>
       <div className="wait-time" ref={timeElement}>
-        {currentWaitTime}
+        {rideData.wait_time}
         <span>Minutes</span>
       </div>
 
