@@ -32,9 +32,7 @@ app.get('/', async (req, res) => {
 setInterval(async () => {
   const ts = timestamp()
   console.log(`${ts} ---- Wait Times Updated`)
-  const newWaitTimes = await getWaitTimes();
-  const parkParis = newWaitTimes.find((park) => park.id === 28)
-  console.log(parkParis)
+  const newWaitTimes = await getWaitTimes()
   io.emit('update-wait-times', newWaitTimes)
 }, 300000)
   
