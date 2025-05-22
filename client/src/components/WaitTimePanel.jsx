@@ -7,15 +7,15 @@ export default function WaitTimePanel({ ride }) {
   const [panelClass, setPanelClass] = useState();
   const [waitTimeClass, setWaitTimeClass] = useState('')
   
-  console.log(ride.wait_time)
   useEffect(() => {
-    
+    console.log(`${ride.name}\n ride.wait_time: ${ride.wait_time}\n waitTime: ${waitTime}\n prevWait: ${prevWaitTime.current}`)
     if(ride.wait_time != prevWaitTime.current){
-      
+      console.log(ride.name)
 
       const timeout = setTimeout(() => {
         setWaitTime(ride.waitTime)
         prevWaitTime.current = ride.wait_time
+        setWaitTimeClass('bg-warning')
         
       }, 1000)
 
@@ -39,8 +39,8 @@ export default function WaitTimePanel({ ride }) {
           <div className="tag">Heights</div>
         </div>
       </div>
-      <div className="wait-time">
-        {waitTime}
+      <div className={`wait-time ${waitTimeClass}`}>
+        {(waitTime) ? waitTime : "CLOSED"}
         <span>Minutes</span>
       </div>
 
