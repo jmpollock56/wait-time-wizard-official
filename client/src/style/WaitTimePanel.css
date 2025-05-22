@@ -42,11 +42,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #888888;
+    border: 2px solid #3995ff;
     border-radius: 12px;
     padding: 16px;
     background: linear-gradient(135deg, #3995ff, #001ea1);
-    box-shadow: 0 4px 20px rgba(106, 106, 106, 0.5);
+    box-shadow: 0 4px 20px rgba(58, 61, 252, 0.5);
     position: relative;
     overflow: hidden;
     color: white;
