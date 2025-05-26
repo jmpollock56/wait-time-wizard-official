@@ -22,7 +22,7 @@ export default function Search({
     <section className="w-25 search-sec">
         <select
           name="parkName"
-          className="w-75"
+          className="w-75 form-select form-select-lg"
           value={selectedParkId}
           onChange={handleParkChange}
         >

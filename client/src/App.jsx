@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
-import Search from "./components/Search";
+import NewSearch from "./components/NewSearch";
 import InformationSection from "./components/InformationSection";
 import WaitTimeSection from "./components/WaitTimeSection";
 import socket from "./util/socket";
@@ -9,6 +9,7 @@ import "./style/App.css";
 function App() {
   const [waitTimes, setWaitTimes] = useState([]);
   const [selectedPark, setSelectedPark] = useState({});
+  const [selectedParks, setSelectedParks] = useState([]);
   const parkOptions = waitTimes.map((park) => {
     return {
       id: park.id,
@@ -22,7 +23,6 @@ function App() {
         console.log("----- Fetching Wait Times -----");
         const response = await fetch("http://localhost:3000/");
         const data = await response.json();
-        console.log(data)
         setWaitTimes(data);
       } catch (error) {
         console.log("Error", error);
@@ -52,28 +52,36 @@ function App() {
         setSelectedPark(updatedSelectedPark);
       }
     });
-    
+
     return () => {
-      socket.off("update-wait-times"); 
+      socket.off("update-wait-times");
     };
   }, [selectedPark?.id]);
-
 
   function changeSelectedPark(id) {
     const newSelectedPark = waitTimes.find((park) => park?.id === id);
     setSelectedPark(newSelectedPark);
-    console.log('selectedPark-change: ', selectedPark)
+    console.log("selectedPark-change: ", selectedPark);
+  }
+
+  function addParkToView(park) {
+    setSelectedParks((prev) => [...prev, park])
+  }
+console.log(selectedParks)
+  function removeParkFromView(id) {
+
+    console.log(id, "remove");
   }
 
   return (
-    <>
-      <Header />
+    <div className="app-container">
       <InformationSection />
-      <main className="d-flex vh-100">
-        <Search
-          parkOptions={parkOptions}
-          changeSelectedPark={changeSelectedPark}
-          currentPark={selectedPark.id}
+
+      <main className="d-flex">
+        <NewSearch
+          waitTimes={waitTimes}
+          addParkToView={addParkToView}
+          removeParkFromView={removeParkFromView}
         />
         {selectedPark?.id ? (
           <WaitTimeSection park={selectedPark} />
@@ -81,7 +89,7 @@ function App() {
           <div>Loading...</div>
         )}
       </main>
-    </>
+    </div>
   );
 }
 

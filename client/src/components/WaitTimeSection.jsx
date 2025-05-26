@@ -4,6 +4,7 @@ import '../style/WaitTimeSection.css'
 
 export default function WaitTimeSection({ park }) {
     const [rides, setRides] = useState([])
+   
 
     useEffect(() => {
         const updateRides = () => {
@@ -17,15 +18,12 @@ export default function WaitTimeSection({ park }) {
         updateRides()
     },[park])
 
-  
-
   return (
-    <div className="d-flex flex-column w-75 align-items-center bg-warning" style={{ height: "100%" }}>
-        <div>{park.name}</div>
+    <div className="d-flex flex-column w-100 align-items-center flex-grow-1">
         <section className="d-flex flex-column justify-content-center align-items-center gap-2 w-100 ride-sec">
             {rides.map((ride, i) => {
             
-                return <WaitTimePanel key={i} ride={ride} />;
+                return <WaitTimePanel key={i} ride={ride} parkId={park.id}/>;
             
             })}
         </section>

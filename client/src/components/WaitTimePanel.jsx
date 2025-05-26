@@ -1,35 +1,44 @@
 import  { useState, useEffect, useRef } from "react";
+import CoasterIcon from'../assets/coaster.png'
 import "../style/WaitTimePanel.css";
 
-export default function WaitTimePanel({ ride }) {
+export default function WaitTimePanel({ ride, parkId }) {
   const [waitTime, setWaitTime] = useState(ride.wait_time)
   const prevWaitTime = useRef(ride.wait_time)
+  const currentParkId = useRef(parkId)
   const [panelClass, setPanelClass] = useState();
   const [waitTimeClass, setWaitTimeClass] = useState('')
+  const [waitTimeEmoji, setWaitTimeEmoji] = useState('')
   
   useEffect(() => {
-    console.log(`${ride.name}\n ride.wait_time: ${ride.wait_time}\n waitTime: ${waitTime}\n prevWait: ${prevWaitTime.current}`)
-    if(ride.wait_time != prevWaitTime.current){
-      console.log(ride.name)
-
-      const timeout = setTimeout(() => {
-        setWaitTime(ride.waitTime)
-        prevWaitTime.current = ride.wait_time
-        setWaitTimeClass('bg-warning')
-        
-      }, 1000)
-
-      return () => clearTimeout(timeout)
-    }
+    setWaitTime(ride.wait_time)
+    setWaitTimeClass(() => {
+      if(ride.wait_time >= 60){
+        setWaitTimeEmoji('🔥')
+        return 'ride-card-fire'
+      } else if(ride.wait_time > 0 && ride.wait_time <= 20){
+        setWaitTimeEmoji('🐢')
+        return 'ride-card-turtle'
+      } else if(ride.wait_time > 20 && ride.wait_time < 60){
+        setWaitTimeEmoji('🕒')
+        return 'ride-card-normal'
+      } else if(ride.wait_time === 0 && ride.is_open === true){
+        setWaitTimeEmoji('🕒')
+        return 'ride-card-normal'
+      } else {
+        setWaitTimeEmoji('🚷')
+        return 'ride-card-closed'
+      }
+    })
   },[ride])
   
   
 
   return (
-    <div className="ride-card-normal">
-      <div className="fire fire1">🕒</div>
-      <div className="fire fire2">🕒</div>
-      <div className="fire fire3">🕒</div>
+    <div className={waitTimeClass}>
+      <div className="fire fire1">{waitTimeEmoji}</div>
+      <div className="fire fire2">{waitTimeEmoji}</div>
+      <div className="fire fire3">{waitTimeEmoji}</div>
 
       <div className="ride-info">
         <div className="ride-name">{ride.name}</div>
@@ -39,10 +48,13 @@ export default function WaitTimePanel({ ride }) {
           <div className="tag">Heights</div>
         </div>
       </div>
-      <div className={`wait-time ${waitTimeClass}`}>
-        {(waitTime) ? waitTime : "CLOSED"}
+      
+      {(ride.is_open === true) ?
+      <div className={`wait-time`}>
+        {waitTime}
         <span>Minutes</span>
-      </div>
+      </div> : <div className="wait-time">Closed</div>}
+      
 
       <div className="wait-time-new">
         {ride.wait_time}

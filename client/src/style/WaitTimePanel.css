@@ -10,7 +10,7 @@
     position: relative;
     overflow: hidden;
     color: white;
-    max-width: 1200px;
+    max-width: 80vw;
     width: 100%;
     min-height: 100px;
     height: 10%;
@@ -30,7 +30,7 @@
     position: relative;
     overflow: hidden;
     color: white;
-    max-width: 1200px;
+    max-width: 80vw;
     width: 100%;
     min-height: 100px;
     height: 10%;
@@ -50,7 +50,7 @@
     position: relative;
     overflow: hidden;
     color: white;
-    max-width: 1200px;
+    max-width: 80vw;
     width: 100%;
     min-height: 100px;
     height: 10%;
@@ -70,7 +70,7 @@
     position: relative;
     overflow: hidden;
     color: white;
-    max-width: 1200px;
+    max-width: 80vw;
     width: 100%;
     min-height: 100px;
     height: 10%;
@@ -171,6 +171,11 @@
   .fire1 { bottom: -20px; left: 15px; animation-delay: 0s; }
   .fire2 { bottom: -25px; left: 60px; animation-delay: 1s; }
   .fire3 { bottom: -30px; right: 20px; animation-delay: 2s; }
+
+  .icon{
+    width: 10%;
+    max-width: 80px;
+  }
 
   @keyframes riseFire {
     0% { transform: translateY(0); opacity: 0; }

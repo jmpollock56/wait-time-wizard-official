@@ -17,7 +17,7 @@
  */
 const parks = [{ id: 4, name: 'Disneyland Park Paris'}, { id: 5, name: 'EPCOT'},
     { id: 6, name: 'Magic Kingdom'}, { id: 7, name: 'Hollywood Studios'},
-    { id: 8, name: 'Animal Kngdom'}, { id: 16, name: 'Disneyland'}, { id: 17, name: 'California Adventure'},
+    { id: 8, name: 'Animal Kingdom'}, { id: 16, name: 'Disneyland'}, { id: 17, name: 'California Adventure'},
     { id: 28, name: 'Walt Disney Studios Park'}, { id: 30, name: 'Shanghai Disneyland'},
     { id: 31, name: 'Disneyland Hong Kong'}, { id: 274, name: 'Tokyo Disneyland'},
     { id: 275, name: 'Tokyo DisneySea'}
@@ -50,8 +50,6 @@ export async function getWaitTimes() {
         }
       })
     );
-
-  
     return waitTimes;
   }
   
