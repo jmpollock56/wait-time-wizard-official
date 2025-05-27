@@ -20,7 +20,7 @@ export default function SearchCheckbox({ park, addParkToView, removeParkFromView
 
   return (
     <div className="d-flex gap-2 p-2">
-      <input type="checkbox" name={park.id} onChange={handleChange}/>
+      <input className="form-check-input pointer" type="checkbox" name={park.id} onChange={handleChange}/>
       <label htmlFor={park.id}>{park.name}</label>
     </div>
   );
