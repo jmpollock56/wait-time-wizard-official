@@ -17,6 +17,10 @@ function App() {
     };
   });
 
+  /**
+   * Terracota Cream Light theme
+   */
+
   useEffect(() => {
     const fetchWaitTimes = async () => {
       try {
@@ -45,6 +49,12 @@ function App() {
       console.log(newWaitTimes);
       setWaitTimes(newWaitTimes);
 
+      /**
+       * TODO:
+       * This useEffect now needs to service the selectedParks to update
+       * the wait times of any park that is selected.
+       */
+
       const updatedSelectedPark = newWaitTimes.find(
         (park) => park.id === selectedPark?.id
       );
@@ -67,12 +77,13 @@ function App() {
   function addParkToView(park) {
     setSelectedParks((prev) => [...prev, park])
   }
-console.log(selectedParks)
-  function removeParkFromView(id) {
 
-    console.log(id, "remove");
+  function removeParkFromView(park) {
+    console.log(park)
+    const newParks = selectedParks.filter(sPark => sPark.id != park.id)
+    setSelectedParks(newParks)
   }
-
+  
   return (
     <div className="app-container">
       <InformationSection />
@@ -84,7 +95,7 @@ console.log(selectedParks)
           removeParkFromView={removeParkFromView}
         />
         {selectedPark?.id ? (
-          <WaitTimeSection park={selectedPark} />
+          <WaitTimeSection parks={selectedParks} />
         ) : (
           <div>Loading...</div>
         )}

@@ -1,11 +1,9 @@
 import  { useState, useEffect, useRef } from "react";
-import CoasterIcon from'../assets/coaster.png'
 import "../style/WaitTimePanel.css";
 
-export default function WaitTimePanel({ ride, parkId }) {
+export default function WaitTimePanel({ ride }) {
   const [waitTime, setWaitTime] = useState(ride.wait_time)
   const prevWaitTime = useRef(ride.wait_time)
-  const currentParkId = useRef(parkId)
   const [panelClass, setPanelClass] = useState();
   const [waitTimeClass, setWaitTimeClass] = useState('')
   const [waitTimeEmoji, setWaitTimeEmoji] = useState('')
