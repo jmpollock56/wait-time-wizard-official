@@ -1,6 +1,7 @@
-export default rideAttributes = [
-  (epcot = {
+const rideAttributes = [
+  {
     id: 5,
+    name: 'E.P.C.O.T.',
     rides: [
       {
         id: 13773,
@@ -127,9 +128,10 @@ export default rideAttributes = [
         attributes: ["Show", "Family-Friendly"],
       },
     ],
-  }),
-  (studios_paris = {
+  },
+  {
     id: 28,
+    name: 'Walt Disney Studios Paris',
     rides: [
       {
         id: 10848,
@@ -212,9 +214,10 @@ export default rideAttributes = [
         attributes: [],
       },
     ],
-  }),
-  (disney_sea = {
+  },
+  {
     id: 275,
+    name: 'Tokyo DisneySea',
     rides: [
       { id: 8029, attributes: ["Dark Ride", "Family-Friendly"] },
       { id: 13559, attributes: ["Dark Ride", "Family-Friendly"] },
@@ -251,9 +254,10 @@ export default rideAttributes = [
       { id: 8050, attributes: ["Show", "Family-Friendly"] },
       { id: 8034, attributes: ["Family-Friendly"] },
     ],
-  }),
-  (tokyo_disneyland = {
+  },
+  {
     id: 275,
+    name: 'Tokyo Disneyland',
     rides: [
       {
         id: 8006,
@@ -404,8 +408,10 @@ export default rideAttributes = [
         attributes: ["Show", "Family-Friendly"],
       },
     ],
-  }),
-  (shanghai = {
+  },
+  {
+    id: 30,
+    name: 'Shanghai Disneyland',
     rides: [
       { id: 3079, attributes: ["Family-Friendly"] }, // Camp Discovery (exploration, family)
       { id: 3893, attributes: ["Family-Friendly"] }, // Challenge Trails (family)
@@ -449,9 +455,10 @@ export default rideAttributes = [
       { id: 13819, attributes: ["Thrill Ride", "Coaster", "Small Drops"] }, // Zootopia Hot Pursuit Single Rider (coaster)
       { id: 12392, attributes: ["Thrill Ride", "Coaster", "Small Drops"] }, // Zootopia: Hot Pursuit (coaster)
     ],
-  }),
-  (disneyland_paris = {
+  },
+  {
     id: 4,
+    name: 'Disneyland Park Paris',
     rides: [
       { id: 2702, attributes: ["Family-Friendly"] }, // Adventure Isle (exploration/family)
       { id: 7306, attributes: ["Thrill Ride", "Coaster", "Small Drops"] }, // Indiana Jones and the Temple of Peril Single Rider
@@ -500,9 +507,10 @@ export default rideAttributes = [
       { id: 2708, attributes: ["Family-Friendly"] }, // Disneyland Railroad Main Street Station
       { id: 12, attributes: ["Family-Friendly"] }, // Main Street Vehicles
     ],
-  }),
-  (hong_kong = {
+  },
+  {
     id: 31,
+    name: 'Disneyland Hong Kong',
     rides: [
       {
         id: 2829,
@@ -697,9 +705,10 @@ export default rideAttributes = [
         attributes: ["Family-Friendly"],
       },
     ],
-  }),
-  (disneyland = {
+  },
+  {
     id: 16,
+    name: 'Disneyland',
     rides: [
       { id: 12428, attributes: ["Family-Friendly", "Show"] },
       { id: 326, attributes: ["Thrill Ride", "Dark Ride"] },
@@ -762,9 +771,10 @@ export default rideAttributes = [
       { id: 284, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
       { id: 286, attributes: ["Thrill Ride", "Dark Ride", "Show"] },
     ],
-  }),
-  (magic_kingdom = {
+  },
+  {
     id: 6,
+    name: 'Magic Kingdom',
     rides: [
       { id: 1184, attributes: ["Dark Ride", "Family-Friendly"] },
       { id: 134, attributes: ["Dark Ride", "Family-Friendly"] },
@@ -816,9 +826,10 @@ export default rideAttributes = [
       { id: 11527, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
       { id: 457, attributes: ["Show", "Family-Friendly"] },
     ],
-  }),
-  (hollywood = {
+  },
+  {
     id: 7,
+    name: 'Hollywood Studios',
     rides: [
       { id: 7974, attributes: ["Family-Friendly"] },
       { id: 12430, attributes: ["Meet and Greet"] },
@@ -857,9 +868,10 @@ export default rideAttributes = [
 
       { id: 14859, attributes: ["Show", "Family-Friendly"] },
     ],
-  }),
-  (california_adventure = {
+  },
+  {
     id: 17,
+    name: 'California Adventure',
     rides: [
       { id: 329, attributes: ["Thrill Ride", "Big Drops"] },
       { id: 8843, attributes: ["Thrill Ride", "Family-Friendly"] },
@@ -901,9 +913,10 @@ export default rideAttributes = [
 
       { id: 14742, attributes: ["Show", "Family-Friendly"] },
     ],
-  }),
-  (animal_kingdom = {
+  },
+  {
     id: 8,
+    name: 'Animal Kingdom',
     rides: [
       { id: 657, attributes: ["Show", "Family-Friendly"] },
       { id: 651, attributes: ["Family-Friendly"] },
@@ -935,5 +948,7 @@ export default rideAttributes = [
       { id: 13812, attributes: ["Family-Friendly"] },
       { id: 13808, attributes: ["Show", "Family-Friendly"] },
     ],
-  }),
-];
+  },
+]
+
+export default rideAttributes
