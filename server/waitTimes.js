@@ -1,18 +1,18 @@
 
 /**
  * Disney Park ID's 
- * Walt Disney Studios Paris: 28
- * Tokyo DisneySea: 275
- * Tokyo Disneyland: 274
- * Shanghai Disneyland: 30
- * EPCOT: 5
- * Disneyland Park Paris: 4
- * Disneyland Hong Kong: 31
- * Disneyland: 16
- * Magic Kingdom: 6
- * Hollywood Studios: 7
- * California Adventure: 17
- * Animal Kingdom: 8
+ * Walt Disney Studios Paris: 28 ✅
+ * Tokyo DisneySea: 275 ✅
+ * Tokyo Disneyland: 274 ✅
+ * Shanghai Disneyland: 30 ✅
+ * EPCOT: 5 ✅
+ * Disneyland Park Paris: 4 ✅
+ * Disneyland Hong Kong: 31 ✅
+ * Disneyland: 16 ✅
+ * Magic Kingdom: 6 ✅
+ * Hollywood Studios: 7 ✅
+ * California Adventure: 17 ✅
+ * Animal Kingdom: 8 ✅
  * 
  */
 const parks = [{ id: 4, name: 'Disneyland Park Paris'}, { id: 5, name: 'EPCOT'},
