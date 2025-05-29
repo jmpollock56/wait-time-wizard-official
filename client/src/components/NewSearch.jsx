@@ -5,6 +5,12 @@ export default function NewSearch({
   addParkToView,
   removeParkFromView,
 }) {
+
+  /**
+   * 1. Needs to collapse to the left of screen whenever the screen size gets
+   *    to maybe 900px.
+   * 2. 
+   */
   return (
     <section className="w-25 p-2">
       <h3 className="text-center">Find your rides!</h3>
