@@ -24,6 +24,10 @@ const rideAttributes = [
         attributes: ["Show", "Family-Friendly"],
       },
       {
+        id: 13780,
+        attributes: ["Show", "Family Friendlylk"]
+      },
+      {
         id: 2495,
         attributes: ["Show", "Family-Friendly"],
       },
@@ -876,29 +880,24 @@ const rideAttributes = [
       { id: 329, attributes: ["Thrill Ride", "Big Drops"] },
       { id: 8843, attributes: ["Thrill Ride", "Family-Friendly"] },
       { id: 10907, attributes: ["Thrill Ride", "Family-Friendly"] },
-
       { id: 13961, attributes: ["Spinning", "Family-Friendly"] },
       { id: 315, attributes: ["Spinning", "Family-Friendly"] },
       { id: 295, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
       { id: 10904, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
-
       { id: 302, attributes: ["Thrill Ride", "Big Drops"] },
       { id: 293, attributes: ["Family-Friendly"] },
       { id: 312, attributes: ["Family-Friendly", "Show"] },
-
       { id: 321, attributes: ["Show", "Family-Friendly"] },
       { id: 6440, attributes: ["Show", "Family-Friendly"] },
       { id: 291, attributes: ["Family-Friendly", "Dark Ride"] },
       { id: 868, attributes: ["Show", "Family-Friendly"] },
       { id: 294, attributes: ["Show", "Family-Friendly"] },
-
       { id: 298, attributes: ["Spinning", "Family-Friendly"] },
       { id: 319, attributes: ["Thrill Ride", "Family-Friendly"] },
       { id: 301, attributes: ["Thrill Ride", "Spinning"] },
       { id: 10905, attributes: ["Thrill Ride", "Spinning"] },
       { id: 316, attributes: ["Family-Friendly", "Dark Ride"] },
       { id: 11528, attributes: ["Show", "Family-Friendly"] },
-
       { id: 13960, attributes: ["Family-Friendly"] },
       { id: 322, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
       { id: 10906, attributes: ["Thrill Ride", "Coaster", "Big Drops"] },
@@ -908,9 +907,7 @@ const rideAttributes = [
       { id: 311, attributes: ["Spinning", "Family-Friendly"] },
       { id: 5557, attributes: ["Family-Friendly"] },
       { id: 313, attributes: ["Thrill Ride", "Coaster", "Small Drops"] },
-
       { id: 13959, attributes: ["Show", "Family-Friendly"] },
-
       { id: 14742, attributes: ["Show", "Family-Friendly"] },
     ],
   },

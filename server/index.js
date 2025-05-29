@@ -18,25 +18,37 @@ const io = new Server(server, {
 app.use(cors())
 
 function addAttributes(waitTimes){
-  const newTimes = waitTimes.map((park) => {
-    const attributePark = rideAttributes.find(el => park.id === el.id)
-    const newRides = park.rides.map((ride) => {
-      const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id)
-      return {
+  const newTimes = waitTimes.map((park) => { // Loop through the waitTimes
+    const attributePark = rideAttributes.find(el => park.id === el.id) // find the park in rideAttributes that the loop is currently on in waitTimes
+
+    const newRides = park.rides.map((ride) => { // Loop through the rides from waitTimes of each park
+      const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id) // Find the ride in the current park that matches the ride in waitTimes ride
+
+      console.log(attributeRide)
+      const currentRideAttributes = attributeRide.attributes
+      
+      return{
         id: ride.id,
         name: ride.name,
+        is_open: ride.is_open,
         wait_time: ride.wait_time,
-        attributes: attributeRide.attributes
+        attributes: currentRideAttributes
       }
     })
+    return {
+      id: park.id,
+      name: park.name,
+      rides: newRides
+    }
   })
+  return newTimes
 }
 
 app.get('/', async (req, res) => {
     try {
       const waitTimes = await getWaitTimes(); 
       const completeWaitTimes = await addAttributes(waitTimes)
-      
+      console.log(completeWaitTimes[0].rides)
       res.send(waitTimes);
     } catch (error) {
       console.error('Failed to get wait times:', error);
