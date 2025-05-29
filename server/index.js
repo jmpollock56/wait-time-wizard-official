@@ -23,8 +23,6 @@ function addAttributes(waitTimes){
 
     const newRides = park.rides.map((ride) => { // Loop through the rides from waitTimes of each park
       const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id) // Find the ride in the current park that matches the ride in waitTimes ride
-
-      console.log(attributeRide)
       const currentRideAttributes = attributeRide.attributes
       
       return{
@@ -48,9 +46,9 @@ app.get('/', async (req, res) => {
     try {
       const waitTimes = await getWaitTimes(); 
       const completeWaitTimes = await addAttributes(waitTimes)
-      console.log(completeWaitTimes[0].rides)
-      res.send(waitTimes);
-    } catch (error) {
+      
+      res.send(completeWaitTimes);
+    } catch (error) { 
       console.error('Failed to get wait times:', error);
       res.status(500).send({ error: 'Internal Server Error' });
     }

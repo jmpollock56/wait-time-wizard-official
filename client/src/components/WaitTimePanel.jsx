@@ -29,8 +29,6 @@ export default function WaitTimePanel({ ride }) {
       }
     })
   },[ride])
-  
-  
 
   return (
     <div className={waitTimeClass}>
@@ -41,9 +39,9 @@ export default function WaitTimePanel({ ride }) {
       <div className="ride-info">
         <div className="ride-name">{ride.name}</div>
         <div className="tags">
-          <div className="tag">Rollercoaster</div>
-          <div className="tag">Thrill Ride</div>
-          <div className="tag">Heights</div>
+          {ride.attributes.map((att, i) => {
+            return <div className="tag" key={i}>{att}</div>
+          })}
         </div>
       </div>
       
@@ -51,7 +49,7 @@ export default function WaitTimePanel({ ride }) {
       <div className={`wait-time`}>
         {waitTime}
         <span>Minutes</span>
-      </div> : <div className="wait-time">Closed</div>}
+      </div> : <div className="fs-4">Closed</div>}
       
 
       <div className="wait-time-new">
