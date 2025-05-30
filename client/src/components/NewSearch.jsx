@@ -1,10 +1,12 @@
-import SearchCheckbox from "./SearchCheckbox";
+import SearchCheckbox from "./ParkCheckbox";
+import RideTypeCheckbox from "./RideTypeCheckbox";
 import '../style/NewSearch.css'
 export default function NewSearch({
   waitTimes,
   addParkToView,
   removeParkFromView,
 }) {
+  const allAttributes = ["Show", "Family-Friendly", "Dark Ride", "Meet and Greet", "Thrill Ride", "Coaster", "Spinning", "Big Drops"]
 
   /**
    * 1. Needs to collapse to the left of screen whenever the screen size gets
@@ -69,14 +71,9 @@ export default function NewSearch({
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the second item’s accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It’s also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            {allAttributes.map((attribute, i) => {
+              return <RideTypeCheckbox attribute={attribute} />
+            })}
             </div>
           </div>
         </div>

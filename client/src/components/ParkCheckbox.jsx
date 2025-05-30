@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function SearchCheckbox({ park, addParkToView, removeParkFromView }) {
+export default function ParkCheckbox({ park, addParkToView, removeParkFromView }) {
   const [selectedOption, setSelectedOption] = useState(false)
 
   useEffect(() => {
