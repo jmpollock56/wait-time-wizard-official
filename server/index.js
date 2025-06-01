@@ -30,6 +30,7 @@ function addAttributes(waitTimes){
         name: ride.name,
         is_open: ride.is_open,
         wait_time: ride.wait_time,
+        initial: park.initial,
         attributes: currentRideAttributes
       }
     })

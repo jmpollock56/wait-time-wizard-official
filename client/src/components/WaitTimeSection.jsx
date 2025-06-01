@@ -16,6 +16,7 @@ export default function WaitTimeSection({ parks }) {
         const allRides = parks.map((park) => {
             return park.rides
         })
+        
         const flatRides = allRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
 
         setRides(flatRides)

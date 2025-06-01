@@ -4,7 +4,6 @@ import "../style/WaitTimePanel.css";
 export default function WaitTimePanel({ ride }) {
   const [waitTime, setWaitTime] = useState(ride.wait_time)
   const prevWaitTime = useRef(ride.wait_time)
-  const [panelClass, setPanelClass] = useState();
   const [waitTimeClass, setWaitTimeClass] = useState('')
   const [waitTimeEmoji, setWaitTimeEmoji] = useState('')
   
@@ -37,7 +36,7 @@ export default function WaitTimePanel({ ride }) {
       <div className="fire fire3">{waitTimeEmoji}</div>
 
       <div className="ride-info">
-        <div className="ride-name">{ride.name}</div>
+        <div className="ride-name">{`${ride.name} (${ride.initial})`}</div>
         <div className="tags">
           {(ride.attributes) && ride.attributes.map((att, i) => {
             return <div className="tag" key={i}>{att}</div>

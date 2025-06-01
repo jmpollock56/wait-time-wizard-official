@@ -14,14 +14,13 @@
  * Animal Kingdom: 8 ✅
  * 
  */
-const parks = [{ id: 4, name: 'Disneyland Park Paris'}, { id: 5, name: 'EPCOT'},
-    { id: 6, name: 'Magic Kingdom'}, { id: 7, name: 'Hollywood Studios'},
-    { id: 8, name: 'Animal Kingdom'}, { id: 16, name: 'Disneyland'}, { id: 17, name: 'California Adventure'},
-    { id: 28, name: 'Walt Disney Studios Park'}, { id: 30, name: 'Shanghai Disneyland'},
-    { id: 31, name: 'Disneyland Hong Kong'}, { id: 274, name: 'Tokyo Disneyland'},
-    { id: 275, name: 'Tokyo DisneySea'}
+const parks = [{ id: 4, name: 'Disneyland Park Paris', initial: 'DPP'}, { id: 5, name: 'EPCOT', initial: 'EPCOT'},
+    { id: 6, name: 'Magic Kingdom', initial: 'MK'}, { id: 7, name: 'Hollywood Studios', initial: 'HS'},
+    { id: 8, name: 'Animal Kingdom', initial: 'AK'}, { id: 16, name: 'Disneyland', initial: 'DL'}, { id: 17, name: 'California Adventure', initial: 'CA'},
+    { id: 28, name: 'Walt Disney Studios Park', initial: 'WDSP'}, { id: 30, name: 'Shanghai Disneyland', initial: 'SHDL'},
+    { id: 31, name: 'Disneyland Hong Kong', initial: 'DHK'}, { id: 274, name: 'Tokyo Disneyland', initial: 'TDL'},
+    { id: 275, name: 'Tokyo DisneySea', initial: 'TDS'}
 ]
-
 
 export async function getWaitTimes() {
     const waitTimes = await Promise.all(
@@ -38,6 +37,7 @@ export async function getWaitTimes() {
     
             return {
               id: park.id,
+              initial: park.initial,
               name: park.name,
               rides: parsedLands.flat()
             };
