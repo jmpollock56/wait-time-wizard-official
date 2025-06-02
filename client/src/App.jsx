@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
 import NewSearch from "./components/NewSearch";
 import InformationSection from "./components/InformationSection";
 import WaitTimeSection from "./components/WaitTimeSection";
@@ -10,16 +9,13 @@ function App() {
   const [waitTimes, setWaitTimes] = useState([]);
   const [selectedPark, setSelectedPark] = useState({});
   const [selectedParks, setSelectedParks] = useState([]);
+  const [filteredParks, setFilteredParks] = useState([]);
   const parkOptions = waitTimes.map((park) => {
     return {
       id: park.id,
       name: park.name,
     };
   });
-
-  /**
-   * Terracota Cream Light theme
-   */
 
   useEffect(() => {
     const fetchWaitTimes = async () => {
@@ -46,14 +42,7 @@ function App() {
   useEffect(() => {
     socket.on("update-wait-times", (newWaitTimes) => {
       console.log("---- socket update -----");
-      console.log(newWaitTimes);
       setWaitTimes(newWaitTimes);
-
-      /**
-       * TODO:
-       * This useEffect now needs to service the selectedParks to update
-       * the wait times of any park that is selected.
-       */
 
       const updatedSelectedPark = newWaitTimes.find(
         (park) => park.id === selectedPark?.id
@@ -66,24 +55,27 @@ function App() {
     return () => {
       socket.off("update-wait-times");
     };
-  }, [selectedPark?.id]);
-
-  function changeSelectedPark(id) {
-    const newSelectedPark = waitTimes.find((park) => park?.id === id);
-    setSelectedPark(newSelectedPark);
-    console.log("selectedPark-change: ", selectedPark);
-  }
+  }, [selectedParks]);
 
   function addParkToView(park) {
-    setSelectedParks((prev) => [...prev, park])
+    /**
+     * Instead of throwing the entire park into the array, just put the ride arrays. Fix in {@link WaitTimeSection}
+     */
+    setSelectedParks((prev) => [...prev, park]);
+  }
+  console.log(selectedParks)
+  function removeParkFromView(park) {
+    console.log(park);
+    const newParks = selectedParks.filter((sPark) => sPark.id != park.id);
+    setSelectedParks(newParks);
   }
 
-  function removeParkFromView(park) {
-    console.log(park)
-    const newParks = selectedParks.filter(sPark => sPark.id != park.id)
-    setSelectedParks(newParks)
+  function addAttributeFilter(attribute) {
+   
   }
-  
+
+  function removeAttributeFilter(attribute) {}
+
   return (
     <div className="app-container">
       <InformationSection />
@@ -93,6 +85,8 @@ function App() {
           waitTimes={waitTimes}
           addParkToView={addParkToView}
           removeParkFromView={removeParkFromView}
+          addAttributeFilter={addAttributeFilter}
+          removeAttributeFilter={removeAttributeFilter}
         />
         {selectedPark?.id ? (
           <WaitTimeSection parks={selectedParks} />

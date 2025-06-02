@@ -1,17 +1,28 @@
 import SearchCheckbox from "./ParkCheckbox";
 import RideTypeCheckbox from "./RideTypeCheckbox";
-import '../style/NewSearch.css'
+import "../style/NewSearch.css";
 export default function NewSearch({
   waitTimes,
   addParkToView,
   removeParkFromView,
+  removeAttributeFilter,
+  addAttributeFilter,
 }) {
-  const allAttributes = ["Show", "Family-Friendly", "Dark Ride", "Meet and Greet", "Thrill Ride", "Coaster", "Spinning", "Big Drops"]
+  const allAttributes = [
+    "Show",
+    "Family-Friendly",
+    "Dark Ride",
+    "Meet and Greet",
+    "Thrill Ride",
+    "Coaster",
+    "Spinning",
+    "Big Drops",
+  ];
 
   /**
    * 1. Needs to collapse to the left of screen whenever the screen size gets
    *    to maybe 900px.
-   * 2. 
+   * 2.
    */
   return (
     <section className="w-25 p-2">
@@ -71,9 +82,15 @@ export default function NewSearch({
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-            {allAttributes.map((attribute, i) => {
-              return <RideTypeCheckbox attribute={attribute} />
-            })}
+              {allAttributes.map((attribute, i) => {
+                return (
+                  <RideTypeCheckbox
+                    attribute={attribute}
+                    removeAttributeFilter={removeAttributeFilter}
+                    addAttributeFilter={addAttributeFilter}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
@@ -98,9 +115,9 @@ export default function NewSearch({
             <div className="accordion-body">
               <strong>This is the third item’s accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
+              classNamees that we use to style each element. These classNamees
+              control the overall appearance, as well as the showing and hiding
+              via CSS transitions. You can modify any of this with custom CSS or
               overriding our default variables. It’s also worth noting that just
               about any HTML can go within the <code>.accordion-body</code>,
               though the transition does limit overflow.
