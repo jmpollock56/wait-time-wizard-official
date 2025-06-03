@@ -10,13 +10,17 @@ function App() {
   const [selectedPark, setSelectedPark] = useState({});
   const [selectedParks, setSelectedParks] = useState([]);
   const [filteredParks, setFilteredParks] = useState([]);
-  const parkOptions = waitTimes.map((park) => {
-    return {
-      id: park.id,
-      name: park.name,
-    };
-  });
-
+  const allAttributes = [
+    "Show",
+    "Family-Friendly",
+    "Dark Ride",
+    "Meet and Greet",
+    "Thrill Ride",
+    "Coaster",
+    "Spinning",
+    "Big Drops",
+  ]
+console.log(waitTimes)
   useEffect(() => {
     const fetchWaitTimes = async () => {
       try {
@@ -29,7 +33,7 @@ function App() {
       }
     };
     fetchWaitTimes();
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (waitTimes.length > 0 && !selectedPark.id) {
@@ -37,44 +41,52 @@ function App() {
       console.log("----- Default Park Set -----");
       setSelectedPark(defaultPark);
     }
-  }, [waitTimes]);
+  }, [waitTimes])
 
   useEffect(() => {
     socket.on("update-wait-times", (newWaitTimes) => {
-      console.log("---- socket update -----");
+      console.log("---- socket update -----")
       setWaitTimes(newWaitTimes);
 
       const updatedSelectedPark = newWaitTimes.find(
         (park) => park.id === selectedPark?.id
-      );
+      )
       if (updatedSelectedPark) {
-        setSelectedPark(updatedSelectedPark);
+        setSelectedPark(updatedSelectedPark)
       }
-    });
+    })
 
     return () => {
-      socket.off("update-wait-times");
-    };
-  }, [selectedParks]);
+      socket.off("update-wait-times")
+    }
+  }, [selectedParks])
 
   function addParkToView(park) {
-    /**
-     * Instead of throwing the entire park into the array, just put the ride arrays. Fix in {@link WaitTimeSection}
-     */
-    setSelectedParks((prev) => [...prev, park]);
+    setSelectedParks((prev) => [...prev, park])
   }
-  console.log(selectedParks)
+  
   function removeParkFromView(park) {
-    console.log(park);
-    const newParks = selectedParks.filter((sPark) => sPark.id != park.id);
-    setSelectedParks(newParks);
+    const newParks = selectedParks.filter((sPark) => sPark.id != park.id)
+    setSelectedParks(newParks)
   }
 
   function addAttributeFilter(attribute) {
-   
+   /**
+    * Filter from selectedParks and present the filtered list as 'filteredParks'
+    * WIP!!!
+    */
+
+     const newParkList = selectedParks.map((park) => {
+       const newRides = park.rides.filter(ride => {
+        return ride.attributes.some(attr => allAttributes.includes(attr))
+       })
+       console.log(newRides)
+     })
   }
 
-  function removeAttributeFilter(attribute) {}
+  function removeAttributeFilter(attribute) {
+
+  }
 
   return (
     <div className="app-container">
@@ -87,6 +99,7 @@ function App() {
           removeParkFromView={removeParkFromView}
           addAttributeFilter={addAttributeFilter}
           removeAttributeFilter={removeAttributeFilter}
+          allAttributes={allAttributes}
         />
         {selectedPark?.id ? (
           <WaitTimeSection parks={selectedParks} />

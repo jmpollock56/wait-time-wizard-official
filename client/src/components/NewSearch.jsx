@@ -1,23 +1,16 @@
 import SearchCheckbox from "./ParkCheckbox";
 import RideTypeCheckbox from "./RideTypeCheckbox";
 import "../style/NewSearch.css";
+import { useState } from "react";
 export default function NewSearch({
   waitTimes,
   addParkToView,
   removeParkFromView,
   removeAttributeFilter,
   addAttributeFilter,
+  allAttributes
 }) {
-  const allAttributes = [
-    "Show",
-    "Family-Friendly",
-    "Dark Ride",
-    "Meet and Greet",
-    "Thrill Ride",
-    "Coaster",
-    "Spinning",
-    "Big Drops",
-  ];
+  const [attributes, setAllAttributes] = useState(allAttributes)
 
   /**
    * 1. Needs to collapse to the left of screen whenever the screen size gets
@@ -82,7 +75,7 @@ export default function NewSearch({
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              {allAttributes.map((attribute, i) => {
+              {attributes.map((attribute, i) => {
                 return (
                   <RideTypeCheckbox
                     attribute={attribute}
