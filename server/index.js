@@ -18,9 +18,9 @@ const io = new Server(server, {
 app.use(cors())
 
 function addAttributes(waitTimes){
+  
   const newTimes = waitTimes.map((park) => { // Loop through the waitTimes
     const attributePark = rideAttributes.find(el => park.id === el.id) // find the park in rideAttributes that the loop is currently on in waitTimes
-
     const newRides = park.rides.map((ride) => { // Loop through the rides from waitTimes of each park
       const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id) // Find the ride in the current park that matches the ride in waitTimes ride
       const currentRideAttributes = attributeRide.attributes

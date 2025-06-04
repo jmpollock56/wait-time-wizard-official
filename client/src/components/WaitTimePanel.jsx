@@ -28,7 +28,7 @@ export default function WaitTimePanel({ ride }) {
       }
     })
   },[ride])
-
+console.log(ride.name, ride.attributes)
   return (
     <div className={waitTimeClass}>
       <div className="fire fire1">{waitTimeEmoji}</div>
@@ -39,7 +39,7 @@ export default function WaitTimePanel({ ride }) {
         <div className="ride-name">{`${ride.name} (${ride.initial})`}</div>
         <div className="tags">
           {(ride.attributes) && ride.attributes.map((att, i) => {
-            return <div className="tag" key={i}>{att}</div>
+            return <div className="tag" key={i}>{att.name}</div>
           })}
         </div>
       </div>

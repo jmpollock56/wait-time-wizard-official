@@ -25,10 +25,10 @@ export default function RideTypeCheckbox({
       <input
         className="form-check-input pointer"
         type="checkbox"
-        name={attribute}
+        name={attribute.name}
         onChange={handleChange}
       />
-      <label htmlFor={attribute}>{attribute}</label>
+      <label htmlFor={attribute.name}>{attribute.name}</label>
     </div>
   );
 }

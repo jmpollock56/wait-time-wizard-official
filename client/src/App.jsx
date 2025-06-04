@@ -11,16 +11,40 @@ function App() {
   const [selectedParks, setSelectedParks] = useState([]);
   const [filteredParks, setFilteredParks] = useState([]);
   const allAttributes = [
-    "Show",
-    "Family-Friendly",
-    "Dark Ride",
-    "Meet and Greet",
-    "Thrill Ride",
-    "Coaster",
-    "Spinning",
-    "Big Drops",
-  ]
-console.log(waitTimes)
+    { 
+      id: 1,
+      name: "Show"
+    },
+     { 
+      id: 2,
+      name: "Family-Friendly"
+    },
+     { 
+      id: 3,
+      name: "Dark Ride"
+    },
+     { 
+      id: 4,
+      name: "Meet and Greet"
+    },
+    { 
+      id: 5,
+      name: "Thrill Ride"
+    },
+    { 
+      id: 6,
+      name: "Coaster"
+    },
+    { 
+      id: 7,
+      name: "Spinning"
+    },
+    { 
+      id: 8,
+      name: "Big Drops"
+    },
+  ];
+  
   useEffect(() => {
     const fetchWaitTimes = async () => {
       try {
@@ -33,7 +57,7 @@ console.log(waitTimes)
       }
     };
     fetchWaitTimes();
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (waitTimes.length > 0 && !selectedPark.id) {
@@ -41,52 +65,58 @@ console.log(waitTimes)
       console.log("----- Default Park Set -----");
       setSelectedPark(defaultPark);
     }
-  }, [waitTimes])
+  }, [waitTimes]);
 
   useEffect(() => {
     socket.on("update-wait-times", (newWaitTimes) => {
-      console.log("---- socket update -----")
+      console.log("---- socket update -----");
       setWaitTimes(newWaitTimes);
 
       const updatedSelectedPark = newWaitTimes.find(
         (park) => park.id === selectedPark?.id
-      )
+      );
       if (updatedSelectedPark) {
-        setSelectedPark(updatedSelectedPark)
+        setSelectedPark(updatedSelectedPark);
       }
-    })
+    });
 
     return () => {
-      socket.off("update-wait-times")
-    }
-  }, [selectedParks])
+      socket.off("update-wait-times");
+    };
+  }, [selectedParks]);
 
   function addParkToView(park) {
-    setSelectedParks((prev) => [...prev, park])
+    setSelectedParks((prev) => [...prev, park]);
   }
-  
+
   function removeParkFromView(park) {
-    const newParks = selectedParks.filter((sPark) => sPark.id != park.id)
-    setSelectedParks(newParks)
+    const newParks = selectedParks.filter((sPark) => sPark.id != park.id);
+    setSelectedParks(newParks);
   }
 
   function addAttributeFilter(attribute) {
-   /**
-    * Filter from selectedParks and present the filtered list as 'filteredParks'
-    * WIP!!!
-    */
+    /**
+     * Filter from selectedParks and present the filtered list as 'filteredParks'
+     * WIP!!!
+     */
 
-     const newParkList = selectedParks.map((park) => {
-       const newRides = park.rides.filter(ride => {
-        return ride.attributes.some(attr => allAttributes.includes(attr))
-       })
-       console.log(newRides)
-     })
+    const newParkList = selectedParks.map((park) => {
+      const newRides = park.rides.filter((ride) => {
+       const hasAttribute = ride.attribute.some(attr => attr.id === attribute.id)
+       return hasAttribute
+      })
+
+      return {
+        id: park.id,
+        name: park.name,
+        initial: park.initial,
+        rides: newRides
+      }
+    })
+    console.log(newRides)
   }
 
-  function removeAttributeFilter(attribute) {
-
-  }
+  function removeAttributeFilter(attribute) {}
 
   return (
     <div className="app-container">

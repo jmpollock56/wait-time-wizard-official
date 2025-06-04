@@ -78,6 +78,7 @@ export default function NewSearch({
               {attributes.map((attribute, i) => {
                 return (
                   <RideTypeCheckbox
+                    key={i}
                     attribute={attribute}
                     removeAttributeFilter={removeAttributeFilter}
                     addAttributeFilter={addAttributeFilter}
