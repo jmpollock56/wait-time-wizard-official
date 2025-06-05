@@ -13,12 +13,13 @@ export default function WaitTimeSection({ parks, filteredParks }) {
           .sort((a, b) => b.wait_time - a.wait_time)
         setRides(sortedRides)
 
-      } else if(filteredParks.length > 0){
-        const [filteredRides] = filteredParks.map((park) => {
-          return park.rides
-        })
-        const flatFilteredRides = filteredRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
-        setRides(flatFilteredRides)
+      } else if (filteredParks.length > 0){
+          const [filteredRides] = filteredParks.map((park) => {
+            return park.rides
+          })
+          const flatFilteredRides = filteredRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
+          setRides(flatFilteredRides)
+
       } else {
         const allRides = parks.map((park) => {
             return park.rides
@@ -33,10 +34,10 @@ export default function WaitTimeSection({ parks, filteredParks }) {
     updateRides();
   }, [parks, filteredParks]);
 
-  console.log(rides)
+  
   return (
     <div className="d-flex flex-column w-100 align-items-center flex-grow-1">
-      <section className="d-flex flex-column justify-content-center align-items-center gap-2 w-100 ride-sec">
+      <section className="d-flex flex-column gap-2 w-100 ride-sec">
         {(rides.length > 0) ? rides.map((ride, i) => {
           return <WaitTimePanel key={i} ride={ride} />
      }) : (

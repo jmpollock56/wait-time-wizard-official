@@ -131,7 +131,9 @@ function App() {
       });
       setFilteredParks(newSelectedParks);
     }
-  }, [activeAttributes, selectedParks, selectedPark]);
+  }, [activeAttributes, selectedParks]);
+
+  console.log(filteredParks)
 
   function addParkToView(park) {
     setSelectedParks((prev) => [...prev, park]);
