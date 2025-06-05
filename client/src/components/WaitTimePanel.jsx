@@ -6,7 +6,7 @@ export default function WaitTimePanel({ ride }) {
   const prevWaitTime = useRef(ride.wait_time)
   const [waitTimeClass, setWaitTimeClass] = useState('')
   const [waitTimeEmoji, setWaitTimeEmoji] = useState('')
-  
+ 
   useEffect(() => {
     setWaitTime(ride.wait_time)
     setWaitTimeClass(() => {
@@ -28,7 +28,7 @@ export default function WaitTimePanel({ ride }) {
       }
     })
   },[ride])
-console.log(ride.name, ride.attributes)
+
   return (
     <div className={waitTimeClass}>
       <div className="fire fire1">{waitTimeEmoji}</div>

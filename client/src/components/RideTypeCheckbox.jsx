@@ -10,7 +10,9 @@ export default function RideTypeCheckbox({
   useEffect(() => {
     if(selectedAttribute === true){
       addAttributeFilter(attribute)
+      console.log('true')
     } else {
+      console.log('false')
       removeAttributeFilter(attribute)
     }
   }, [selectedAttribute])

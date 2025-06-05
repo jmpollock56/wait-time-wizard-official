@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import WaitTimePanel from "./WaitTimePanel";
 import "../style/WaitTimeSection.css";
 
-export default function WaitTimeSection({ parks }) {
+export default function WaitTimeSection({ parks, filteredParks }) {
   const [rides, setRides] = useState([]);
 
   useEffect(() => {
     const updateRides = () => {
-      if (parks.length === 1) {
+      if (filteredParks.length === 0 && parks.length === 1) {  
         const sortedRides = parks[0].rides
           .slice()
           .sort((a, b) => b.wait_time - a.wait_time)
         setRides(sortedRides)
+
+      } else if(filteredParks.length > 0){
+        const [filteredRides] = filteredParks.map((park) => {
+          return park.rides
+        })
+        const flatFilteredRides = filteredRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
+        setRides(flatFilteredRides)
       } else {
         const allRides = parks.map((park) => {
             return park.rides
@@ -24,14 +31,17 @@ export default function WaitTimeSection({ parks }) {
       
     };
     updateRides();
-  }, [parks]);
+  }, [parks, filteredParks]);
 
+  console.log(rides)
   return (
     <div className="d-flex flex-column w-100 align-items-center flex-grow-1">
       <section className="d-flex flex-column justify-content-center align-items-center gap-2 w-100 ride-sec">
-        {rides.map((ride, i) => {
-          return <WaitTimePanel key={i} ride={ride} />;
-        })}
+        {(rides.length > 0) ? rides.map((ride, i) => {
+          return <WaitTimePanel key={i} ride={ride} />
+     }) : (
+        <div>Choose a Park</div>
+        )}
       </section>
     </div>
   );

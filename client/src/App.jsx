@@ -9,42 +9,43 @@ function App() {
   const [waitTimes, setWaitTimes] = useState([]);
   const [selectedPark, setSelectedPark] = useState({});
   const [selectedParks, setSelectedParks] = useState([]);
-  const [filteredParks, setFilteredParks] = useState([]);
+  const [filteredParks, setFilteredParks] = useState([]); // Use only when an attribute is selected, otherwise use selectedParks
+  const [activeAttributes, setActiveAttributes] = useState([]);
   const allAttributes = [
-    { 
+    {
       id: 1,
-      name: "Show"
+      name: "Show",
     },
-     { 
+    {
       id: 2,
-      name: "Family-Friendly"
+      name: "Family-Friendly",
     },
-     { 
+    {
       id: 3,
-      name: "Dark Ride"
+      name: "Dark Ride",
     },
-     { 
+    {
       id: 4,
-      name: "Meet and Greet"
+      name: "Meet and Greet",
     },
-    { 
+    {
       id: 5,
-      name: "Thrill Ride"
+      name: "Thrill Ride",
     },
-    { 
+    {
       id: 6,
-      name: "Coaster"
+      name: "Coaster",
     },
-    { 
+    {
       id: 7,
-      name: "Spinning"
+      name: "Spinning",
     },
-    { 
+    {
       id: 8,
-      name: "Big Drops"
+      name: "Big Drops",
     },
   ];
-  
+
   useEffect(() => {
     const fetchWaitTimes = async () => {
       try {
@@ -68,6 +69,10 @@ function App() {
   }, [waitTimes]);
 
   useEffect(() => {
+    /**
+     * Needs to update selectedPark(s!!!) instead of selectedPark.
+     * !!!!!!
+     */
     socket.on("update-wait-times", (newWaitTimes) => {
       console.log("---- socket update -----");
       setWaitTimes(newWaitTimes);
@@ -85,6 +90,49 @@ function App() {
     };
   }, [selectedParks]);
 
+  /**
+   * 1. filteredParks are not updating whenever the user has a park and
+   *    and an attribute selected, then selects another park. It will just
+   *    show the original list of rides with the original park and attribute
+   * 
+   * 2. Crashes sometimes with error being
+   *      App.jsx:101 Uncaught TypeError: Cannot read properties of undefined (reading 'some')
+          at App.jsx:101:40
+          at Array.filter (<anonymous>)
+          at App.jsx:99:42
+          at Array.map (<anonymous>)
+          at App.jsx:98:46
+
+      ** No repeatable reason found atm **
+   */
+
+  useEffect(() => {
+  console.log('attribute fire')
+    if (activeAttributes.length === 0) {
+      setFilteredParks([]);
+    } else {
+      const newSelectedParks = selectedParks.map((park) => {
+        const filteredRides = park.rides.filter((ride) => {
+          const rideAttrs = ride.attributes;
+          const isSelected = rideAttrs.some((el) =>
+            activeAttributes.some((el2) => el.id === el2.id)
+          );
+
+          if (isSelected) {
+            return ride;
+          }
+        });
+        
+        return {
+          id: park.id,
+          name: park.name,
+          rides: filteredRides,
+        };
+      });
+      setFilteredParks(newSelectedParks);
+    }
+  }, [activeAttributes, selectedParks, selectedPark]);
+
   function addParkToView(park) {
     setSelectedParks((prev) => [...prev, park]);
   }
@@ -95,28 +143,15 @@ function App() {
   }
 
   function addAttributeFilter(attribute) {
-    /**
-     * Filter from selectedParks and present the filtered list as 'filteredParks'
-     * WIP!!!
-     */
-
-    const newParkList = selectedParks.map((park) => {
-      const newRides = park.rides.filter((ride) => {
-       const hasAttribute = ride.attribute.some(attr => attr.id === attribute.id)
-       return hasAttribute
-      })
-
-      return {
-        id: park.id,
-        name: park.name,
-        initial: park.initial,
-        rides: newRides
-      }
-    })
-    console.log(newRides)
+    setActiveAttributes((prev) => [...prev, attribute]);
   }
 
-  function removeAttributeFilter(attribute) {}
+  function removeAttributeFilter(attribute) {
+    const newAttributes = activeAttributes.filter(
+      (attr) => attr.id != attribute.id
+    );
+    setActiveAttributes(newAttributes);
+  }
 
   return (
     <div className="app-container">
@@ -131,10 +166,13 @@ function App() {
           removeAttributeFilter={removeAttributeFilter}
           allAttributes={allAttributes}
         />
-        {selectedPark?.id ? (
-          <WaitTimeSection parks={selectedParks} />
+        {selectedParks.length > 0 ? (
+          <WaitTimeSection
+            parks={selectedParks}
+            filteredParks={filteredParks}
+          />
         ) : (
-          <div>Loading...</div>
+          <div>Pick a Park!</div>
         )}
       </main>
     </div>
