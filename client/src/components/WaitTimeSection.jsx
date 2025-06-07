@@ -7,20 +7,25 @@ export default function WaitTimeSection({ parks, filteredParks }) {
 
   useEffect(() => {
     const updateRides = () => {
+      
       if (filteredParks.length === 0 && parks.length === 1) {  
+        
         const sortedRides = parks[0].rides
           .slice()
           .sort((a, b) => b.wait_time - a.wait_time)
         setRides(sortedRides)
 
       } else if (filteredParks.length > 0){
+          console.log(filteredParks)
           const [filteredRides] = filteredParks.map((park) => {
             return park.rides
           })
           const flatFilteredRides = filteredRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
+          console.log('flat',flatFilteredRides)
           setRides(flatFilteredRides)
 
       } else {
+       
         const allRides = parks.map((park) => {
             return park.rides
         })
@@ -34,7 +39,7 @@ export default function WaitTimeSection({ parks, filteredParks }) {
     updateRides();
   }, [parks, filteredParks]);
 
-  
+  console.log(rides)
   return (
     <div className="d-flex flex-column w-100 align-items-center flex-grow-1">
       <section className="d-flex flex-column gap-2 w-100 ride-sec">

@@ -46,7 +46,7 @@ function App() {
     },
   ];
 
-  useEffect(() => {
+  useEffect(() => { // Initial fetch
     const fetchWaitTimes = async () => {
       try {
         console.log("----- Fetching Wait Times -----");
@@ -133,7 +133,7 @@ function App() {
     }
   }, [activeAttributes, selectedParks]);
 
-  console.log(filteredParks)
+ 
 
   function addParkToView(park) {
     setSelectedParks((prev) => [...prev, park]);
