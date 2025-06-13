@@ -9,23 +9,24 @@ export default function WaitTimeSection({ parks, filteredParks }) {
     const updateRides = () => {
       
       if (filteredParks.length === 0 && parks.length === 1) {  
-        
+        console.log('1')
         const sortedRides = parks[0].rides
           .slice()
           .sort((a, b) => b.wait_time - a.wait_time)
         setRides(sortedRides)
 
       } else if (filteredParks.length > 0){
-          console.log(filteredParks)
-          const [filteredRides] = filteredParks.map((park) => {
+          console.log('2')
+          const filteredRides = filteredParks.map((park) => {
             return park.rides
           })
+          console.log(filteredRides, '2', filteredParks)
           const flatFilteredRides = filteredRides.flat().slice().sort((a,b) => b.wait_time - a.wait_time)
           console.log('flat',flatFilteredRides)
           setRides(flatFilteredRides)
 
       } else {
-       
+       console.log('3')
         const allRides = parks.map((park) => {
             return park.rides
         })

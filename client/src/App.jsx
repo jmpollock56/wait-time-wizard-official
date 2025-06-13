@@ -46,7 +46,8 @@ function App() {
     },
   ];
 
-  useEffect(() => { // Initial fetch
+  useEffect(() => {
+    // Initial fetch
     const fetchWaitTimes = async () => {
       try {
         console.log("----- Fetching Wait Times -----");
@@ -59,14 +60,6 @@ function App() {
     };
     fetchWaitTimes();
   }, []);
-
-  useEffect(() => {
-    if (waitTimes.length > 0 && !selectedPark.id) {
-      const defaultPark = waitTimes.find((park) => park.id === 6);
-      console.log("----- Default Park Set -----");
-      setSelectedPark(defaultPark);
-    }
-  }, [waitTimes]);
 
   useEffect(() => {
     /**
@@ -90,50 +83,48 @@ function App() {
     };
   }, [selectedParks]);
 
-  /**
-   * 1. filteredParks are not updating whenever the user has a park and
-   *    and an attribute selected, then selects another park. It will just
-   *    show the original list of rides with the original park and attribute
-   * 
-   * 2. Crashes sometimes with error being
-   *      App.jsx:101 Uncaught TypeError: Cannot read properties of undefined (reading 'some')
-          at App.jsx:101:40
-          at Array.filter (<anonymous>)
-          at App.jsx:99:42
-          at Array.map (<anonymous>)
-          at App.jsx:98:46
-
-      ** No repeatable reason found atm **
-   */
-
   useEffect(() => {
-  console.log('attribute fire')
+    console.log("attribute fire");
     if (activeAttributes.length === 0) {
       setFilteredParks([]);
     } else {
-      const newSelectedParks = selectedParks.map((park) => {
-        const filteredRides = park.rides.filter((ride) => {
-          const rideAttrs = ride.attributes;
-          const isSelected = rideAttrs.some((el) =>
-            activeAttributes.some((el2) => el.id === el2.id)
-          );
-
-          if (isSelected) {
-            return ride;
-          }
-        });
-        
-        return {
-          id: park.id,
-          name: park.name,
-          rides: filteredRides,
-        };
-      });
-      setFilteredParks(newSelectedParks);
+      if (filteredParks.length > 0) {
+        /**
+         * THIS NEEDS TO BE FIXED!!!!! SOS
+         */
+        filterParks(filteredParks)
+      } else {
+        filterParks(selectedParks)
+      }
     }
   }, [activeAttributes, selectedParks]);
 
- 
+  function filterParks(parks) {
+    /**
+     * Parks is either selectedParks or filteredParks
+     */
+
+    const newSelectedParks = parks.map((park) => {
+      const filteredRides = park.rides.filter((ride) => {
+        const rideAttrs = ride.attributes;
+        const isSelected = rideAttrs.some((el) =>
+          activeAttributes.some((el2) => el.id === el2.id)
+        );
+
+        if (isSelected) {
+          return ride;
+        }
+      });
+
+      return {
+        id: park.id,
+        name: park.name,
+        rides: filteredRides,
+      };
+    });
+
+    setFilteredParks(newSelectedParks);
+  }
 
   function addParkToView(park) {
     setSelectedParks((prev) => [...prev, park]);
