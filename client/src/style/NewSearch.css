@@ -1,0 +1,24 @@
+input[type=checkbox]{
+  background-color: rgb(247, 234, 250);
+  border: 1px solid rgb(143, 79, 143);
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked{
+  background-color: rgb(159, 112, 170);
+  border: 1px solid rgb(143, 79, 143);
+  cursor: pointer;
+}
+
+input[type=checkbox]:focus{
+  box-shadow: none;
+  border: 1px solid rgb(143, 79, 143);
+}
+
+.a-button:focus,
+.a-button:active,
+.a-button:not(.collapsed){
+  background-color: rgb(143, 79, 143); 
+  box-shadow: none; 
+  color: white; 
+}

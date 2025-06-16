@@ -9,7 +9,7 @@ function App() {
   const [waitTimes, setWaitTimes] = useState([]);
   const [selectedPark, setSelectedPark] = useState({});
   const [selectedParks, setSelectedParks] = useState([]);
-  const [filteredParks, setFilteredParks] = useState([]); // Use only when an attribute is selected, otherwise use selectedParks
+  const [filteredParks, setFilteredParks] = useState([]); 
   const [activeAttributes, setActiveAttributes] = useState([]);
   const allAttributes = [
     {
@@ -69,7 +69,7 @@ function App() {
     socket.on("update-wait-times", (newWaitTimes) => {
       console.log("---- socket update -----");
       setWaitTimes(newWaitTimes);
-
+      console.log(newWaitTimes)
       const updatedSelectedPark = newWaitTimes.find(
         (park) => park.id === selectedPark?.id
       );
@@ -88,26 +88,16 @@ function App() {
     if (activeAttributes.length === 0) {
       setFilteredParks([]);
     } else {
-      if (filteredParks.length > 0) {
-        /**
-         * THIS NEEDS TO BE FIXED!!!!! SOS
-         */
-        filterParks(filteredParks)
-      } else {
-        filterParks(selectedParks)
-      }
+     filterParks()
     }
-  }, [activeAttributes, selectedParks]);
+  }, [activeAttributes, selectedParks, waitTimes]);
 
-  function filterParks(parks) {
-    /**
-     * Parks is either selectedParks or filteredParks
-     */
+  function filterParks() {
 
-    const newSelectedParks = parks.map((park) => {
+    const newSelectedParks = selectedParks.map((park) => {
       const filteredRides = park.rides.filter((ride) => {
         const rideAttrs = ride.attributes;
-        const isSelected = rideAttrs.some((el) =>
+        const isSelected = rideAttrs?.some((el) =>
           activeAttributes.some((el2) => el.id === el2.id)
         );
 

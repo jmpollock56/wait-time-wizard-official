@@ -25,7 +25,7 @@ export default function RideTypeCheckbox({
   return (
     <div className="d-flex gap-2 p-2">
       <input
-        className="form-check-input pointer"
+        className="form-check-input"
         type="checkbox"
         name={attribute.name}
         onChange={handleChange}

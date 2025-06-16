@@ -18,13 +18,13 @@ export default function NewSearch({
    * 2.
    */
   return (
-    <section className="w-25 p-2">
+    <section className="w-25 p-2 new-search">
       <h3 className="text-center">Find your rides!</h3>
       <div className="accordion accordion-flush" id="accordionExample">
-        <div className="accordion-item">
+        <div className="accordion-item a-item">
           <h2 className="accordion-header">
             <button
-              className="accordion-button"
+              className="accordion-button a-button"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -59,7 +59,7 @@ export default function NewSearch({
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className="accordion-button a-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
@@ -88,17 +88,18 @@ export default function NewSearch({
             </div>
           </div>
         </div>
-        <div className="accordion-item">
+
+        <div className="accordion-item ">
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed"
+              className="accordion-button a-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseThree"
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              Park Status
             </button>
           </h2>
           <div
