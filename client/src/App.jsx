@@ -69,20 +69,21 @@ function App() {
      */
     socket.on("update-wait-times", (newWaitTimes) => {
       console.log("---- socket update -----");
-      setWaitTimes(newWaitTimes);
-      console.log(newWaitTimes)
-      const updatedSelectedPark = newWaitTimes.find(
-        (park) => park.id === selectedPark?.id
-      );
-      if (updatedSelectedPark) {
-        setSelectedPark(updatedSelectedPark);
-      }
+      setWaitTimes(newWaitTimes)
+    
+      const updatedSelectedParks = waitTimes.filter(park => selectedParks.includes(park))
+      console.log(updatedSelectedParks, 'updatedSelectedParks')
+      setSelectedParks(updatedSelectedParks)
+      
+      
     });
 
     return () => {
       socket.off("update-wait-times");
     };
   }, [selectedParks]);
+  
+  console.log(waitTimes)
 
   useEffect(() => {
     console.log("attribute fire");

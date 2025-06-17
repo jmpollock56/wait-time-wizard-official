@@ -3,7 +3,6 @@ import "../style/WaitTimePanel.css";
 
 export default function WaitTimePanel({ ride }) {
   const [waitTime, setWaitTime] = useState(ride.wait_time)
-  const prevWaitTime = useRef(ride.wait_time)
   const [waitTimeClass, setWaitTimeClass] = useState('')
   const [waitTimeEmoji, setWaitTimeEmoji] = useState('')
  
@@ -27,8 +26,10 @@ export default function WaitTimePanel({ ride }) {
         return 'ride-card-closed'
       }
     })
+    
   },[ride])
 
+  console.log(ride)
   return (
     <div className={waitTimeClass}>
       <div className="fire fire1">{waitTimeEmoji}</div>

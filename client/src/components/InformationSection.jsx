@@ -11,8 +11,8 @@ export default function InformationSection() {
           Your go-to source for real-time theme park wait times. Whether you're
           chasing thrills or planning a family day out, our powerful search and
           filtering tools make it easy to find wait times for every ride, show,
-          and attraction—fast. Skip the guesswork, plan smarter, and make every
-          moment count.
+          and attraction. Skip the guesswork, plan smarter, and make every
+          moment count. Wait Times provided by <a href="https://queue-times.com/"><b>queue-times.com</b></a> 
         </p>
       </div>
     </section>
