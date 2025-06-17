@@ -18,7 +18,7 @@ export default function NewSearch({
    * 2.
    */
   return (
-    <section className="w-25 p-2 new-search">
+    <section className="p-2 new-search">
       <h3 className="text-center">Find your rides!</h3>
       <div className="accordion accordion-flush" id="accordionExample">
         <div className="accordion-item a-item">

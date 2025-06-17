@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NewSearch from "./components/NewSearch";
 import InformationSection from "./components/InformationSection";
 import WaitTimeSection from "./components/WaitTimeSection";
+import ChooseParkMessage from "./components/ChooseParkMessage";
 import socket from "./util/socket";
 import "./style/App.css";
 
@@ -90,7 +91,7 @@ function App() {
     } else {
      filterParks()
     }
-  }, [activeAttributes, selectedParks, waitTimes]);
+  }, [activeAttributes, selectedParks]);
 
   function filterParks() {
 
@@ -155,7 +156,7 @@ function App() {
             filteredParks={filteredParks}
           />
         ) : (
-          <div>Pick a Park!</div>
+          <ChooseParkMessage />
         )}
       </main>
     </div>

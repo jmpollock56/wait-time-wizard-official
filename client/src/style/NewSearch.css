@@ -2,6 +2,7 @@ input[type=checkbox]{
   background-color: rgb(247, 234, 250);
   border: 1px solid rgb(143, 79, 143);
   cursor: pointer;
+  border-radius: 25%;
 }
 
 input[type=checkbox]:checked{
@@ -21,4 +22,13 @@ input[type=checkbox]:focus{
   background-color: rgb(143, 79, 143); 
   box-shadow: none; 
   color: white; 
+}
+
+.accordion-body{
+  background-color: #F9FAFB;
+  border: 2px solid rgb(143, 79, 143);
+}
+
+.new-search{
+  width: 20%;
 }
