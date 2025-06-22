@@ -1,7 +1,27 @@
+:root{
+  --panel-bg: #1c3084;
+  --bg-dark: oklch(0.1 0.05 235);
+  --bg: oklch(0.15 0.05 235);
+  --bg-light: oklch(0.2 0.05 235);
+  --text: oklch(0.96 0.1 235);
+  --text-muted: oklch(0.76 0.1 235);
+  --highlight: oklch(0.5 0.1 235);
+  --border: oklch(0.4 0.1 235);
+  --border-muted: oklch(0.3 0.1 235);
+  --primary: oklch(0.76 0.1 235);
+  --secondary: oklch(0.76 0.1 55);
+  --danger: oklch(0.7 0.1 30);
+  --warning: oklch(0.7 0.1 100);
+  --success: oklch(0.7 0.1 160);
+  --info: oklch(0.7 0.1 260);
+  --bs-accordion-bg: rgba(255, 255, 255, 0);
+}
+
 body, html, #root {
     height: 100vh;
     margin: 0;
-    background-color: #F9FAFB;
+    background-color: var(--bg);
+    font-family: 'Inter', sans-serif;
   }
     
 .app-container{

@@ -1,92 +1,32 @@
-   .ride-card-fire {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid #ff7043;
-    border-radius: 12px;
-    padding: 16px;
-    background: linear-gradient(135deg, #ff5722, #ff9800);
-    box-shadow: 0 4px 20px rgba(255, 87, 34, 0.5);
-    position: relative;
-    overflow: hidden;
-    color: white;
-    max-width: 80vw;
-    width: 100%;
-    min-height: 150px;
-    height: 10%;
-    flex-wrap: wrap;
-    cursor: pointer;
-  }
-
-  .ride-card-turtle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid #0ab91b;
-    border-radius: 12px;
-    padding: 16px;
-    background: linear-gradient(135deg, #259214, #18c601);
-    box-shadow: 0 4px 20px rgba(89, 255, 34, 0.5);
-    position: relative;
-    overflow: hidden;
-    color: white;
-    max-width: 80vw;
-    width: 100%;
-    min-height: 150px;
-    height: 10%;
-    flex-wrap: wrap;
-    cursor: pointer;
-  }
 
   .ride-card-normal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #3995ff;
-    border-radius: 12px;
-    padding: 16px;
-    background: linear-gradient(135deg, #3995ff, #001ea1);
-    box-shadow: 0 4px 20px rgba(58, 61, 252, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--panel-bg);
     position: relative;
     overflow: hidden;
-    color: white;
-    max-width: 80vw;
-    width: 100%;
-    min-height: 150px;
-    height: 10%;
+    color: var(--text);
+    width: 45%;
+    min-height: 50px;
+    height: 5%;
     flex-wrap: wrap;
     cursor: pointer;
   }
 
-  .ride-card-closed {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid #f50707;
-    border-radius: 12px;
-    padding: 16px;
-    background: linear-gradient(135deg, #ee0505, #b10000);
-    box-shadow: 0 4px 20px rgba(243, 7, 7, 0.5);
-    position: relative;
-    overflow: hidden;
-    color: white;
-    max-width: 80vw;
-    width: 100%;
-    min-height: 150px;
-    height: 10%;
-    flex-wrap: wrap;
-    cursor: pointer;
-  }
 
   .ride-info {
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 10px;
     min-width: 200px;
   }
 
   .ride-name {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -95,11 +35,12 @@
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    color: var(--text-muted);
   }
 
   .tag {
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: var(--highlight);
+    border: 1px solid var(--border);
     border-radius: 9999px;
     padding: 4px 10px;
     font-size: 0.75em;
@@ -107,101 +48,14 @@
   }
 
   .wait-time {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-weight: bold;
-    font-size: 1.4em;
-    width: 75px;
-    height: 70px;
-    z-index: 1;
+   font-size: 40px;
+   font-weight: 600;
   }
 
-  .wait-time span {
-    font-size: 0.6em;
-    font-weight: normal;
-  }
+ 
 
-  .wait-time-new {
-    margin-top: 10px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-weight: bold;
-    font-size: 1.4em;
-    width: 75px;
-    height: 70px;
-    z-index: 1;
-    
-  }
+ 
 
-  .wait-time-new span {
-    font-size: 0.6em;
-    font-weight: normal;
-  }
+ 
 
-  .new-time-animation{
-    animation: timeChangeLeave 3s;
-  }
-
-  .time-leave{
-    display: flex;
-    animation: timeChangeCome 3s;
-  }
-
-  .fire {
-    position: absolute;
-    font-size: 18px;
-    animation: riseFire 4s linear infinite;
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  .fire1 { bottom: -20px; left: 15px; animation-delay: 0s; }
-  .fire2 { bottom: -25px; left: 60px; animation-delay: 1s; }
-  .fire3 { bottom: -30px; right: 20px; animation-delay: 2s; }
-
-  .icon{
-    width: 10%;
-    max-width: 80px;
-  }
-
-  @keyframes riseFire {
-    0% { transform: translateY(0); opacity: 0; }
-    30% { opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
-  }
-
-  @keyframes timeChangeLeave {  
-    0% { transform: translateY(0); opacity: 0; }
-    30% { opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
-  }
-
-  @keyframes timeChangeCome {
-    0% {transform: translateY(-100px);}
-    50% {transform: translate(0px);}
-  }
-
-  @media (max-width: 480px) {
-    .ride-card {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .wait-time {
-      align-self: center;
-      margin-top: 20px;
-    }
-  }
+ 

@@ -31,10 +31,7 @@ export default function WaitTimePanel({ ride }) {
 
   console.log(ride)
   return (
-    <div className={waitTimeClass}>
-      <div className="fire fire1">{waitTimeEmoji}</div>
-      <div className="fire fire2">{waitTimeEmoji}</div>
-      <div className="fire fire3">{waitTimeEmoji}</div>
+    <div className='ride-card-normal'>
 
       <div className="ride-info">
         <div className="ride-name">{`${ride.name} (${ride.initial})`}</div>
@@ -46,16 +43,10 @@ export default function WaitTimePanel({ ride }) {
       </div>
       
       {(ride.is_open === true) ?
-      <div className={`wait-time`}>
+      <div className='wait-time'>
         {waitTime}
-        <span>Minutes</span>
       </div> : <div className="fs-4">Closed</div>}
       
-
-      <div className="wait-time-new">
-        {ride.wait_time}
-        <span>Minutes</span>
-      </div>
     </div>
   );
 }

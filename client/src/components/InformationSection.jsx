@@ -3,11 +3,10 @@ import background from "/wtw-back.png";
 
 export default function InformationSection() {
   return (
-    <section className="d-flex flex-column justify-content-center align-item-center text-center info-sec">
-      <img src={background} alt="info-sec" className="info-pic"/>
+    <section className="d-flex flex-column info-sec">
       <div className="info-div">
-        <h2>Welcome to Wait Time Wizard!</h2>
-        <p>
+        <h2 className="info-header">Welcome to Wait Time Wizard!</h2>
+        <p className="info-sub">
           Your go-to source for real-time theme park wait times. Whether you're
           chasing thrills or planning a family day out, our powerful search and
           filtering tools make it easy to find wait times for every ride, show,

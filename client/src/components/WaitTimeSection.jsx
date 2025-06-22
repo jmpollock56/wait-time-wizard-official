@@ -42,8 +42,8 @@ export default function WaitTimeSection({ parks, filteredParks }) {
 
   
   return (
-    <div className="d-flex flex-column align-items-center flex-grow-1 p-2 wait-sec">
-      <section className="d-flex flex-column gap-2 w-100 ride-sec">
+    <div className="d-flex flex-column align-items-center p-2 wait-sec">
+      <section className="d-flex flex-wrap justify-content-center gap-2 ride-sec">
         {(rides.length > 0) ? rides.map((ride, i) => {
           return <WaitTimePanel key={i} ride={ride} />
      }) : (
