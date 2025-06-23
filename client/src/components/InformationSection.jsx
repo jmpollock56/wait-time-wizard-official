@@ -16,7 +16,7 @@ export default function InformationSection() {
   })
 
   return (
-    <section className="d-flex info-sec">
+    <section className="info-sec">
       <div className="info-div">
         <h2 className="info-header">A Wizard's Guide to the Queue Realm</h2>
         <p className="info-sub">

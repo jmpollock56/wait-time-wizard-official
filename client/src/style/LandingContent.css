@@ -3,7 +3,9 @@
     padding: 20px;
     margin-top: 70px;
     display: flex;
+    row-gap: 20px;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .content{
@@ -22,9 +24,3 @@
     padding: 10px;
 }
 
-.lower-content{
-    position: relative; 
-    top: 250px;
-    background-color: var(--bg-dark);
-    height: 50%;
-}
