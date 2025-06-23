@@ -140,8 +140,6 @@ function App() {
 
   return (
     <div className="app-container">
-      <InformationSection />
-
       <main className="d-flex">
         <NewSearch
           waitTimes={waitTimes}

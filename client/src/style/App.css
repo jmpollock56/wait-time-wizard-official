@@ -14,7 +14,7 @@
   --warning: oklch(0.7 0.1 100);
   --success: oklch(0.7 0.1 160);
   --info: oklch(0.7 0.1 260);
-  --bs-accordion-bg: rgba(255, 255, 255, 0);
+  --text-standard: rgb(219, 233, 240);
 }
 
 body, html, #root {

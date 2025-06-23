@@ -1,19 +1,35 @@
 import "../style/InformationSection.css";
-import background from "/wtw-back.png";
+import { Link } from 'react-router'
+import gsap from 'gsap'
+import { useGSAP } from "@gsap/react";
 
 export default function InformationSection() {
+
+  gsap.registerPlugin(useGSAP)
+
+  useGSAP(() => {
+    gsap.from('.info-header', {
+      x: -1000,
+      duration: 2,
+      opacity: 0
+    })  
+  })
+
   return (
-    <section className="d-flex flex-column info-sec">
+    <section className="d-flex info-sec">
       <div className="info-div">
-        <h2 className="info-header">Welcome to Wait Time Wizard!</h2>
+        <h2 className="info-header">A Wizard's Guide to the Queue Realm</h2>
         <p className="info-sub">
-          Your go-to source for real-time theme park wait times. Whether you're
-          chasing thrills or planning a family day out, our powerful search and
-          filtering tools make it easy to find wait times for every ride, show,
-          and attraction. Skip the guesswork, plan smarter, and make every
-          moment count. Wait Times provided by <a href="https://queue-times.com/"><b>queue-times.com</b></a> 
+          Harness the power of real-time magic to outwit long lines, chart 
+          enchanted paths, and make every moment of your adventure 
+          spellbinding. Whether you're a thrill-seeking sorcerer or a family 
+          of friendly wand-wavers, our mystical guide ensures you spend less 
+          time waiting, and more time wandering the wonder.        
         </p>
+        <Link to={'/wait-times'} className="call-to-action">Conjure Wait Times</Link>
       </div>
+    
+      <img src='/hero-image.jpg' className="hero-img"/>
     </section>
   );
 }
