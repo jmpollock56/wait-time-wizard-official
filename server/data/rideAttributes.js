@@ -510,7 +510,7 @@ const rideAttributes = [
     ],
   },
   {
-    id: 275,
+    id: 274,
     name: "Tokyo Disneyland",
     rides: [
       {

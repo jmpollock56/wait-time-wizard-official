@@ -21,10 +21,17 @@ function addAttributes(waitTimes){
   
   const newTimes = waitTimes.map((park) => { // Loop through the waitTimes
     const attributePark = rideAttributes.find(el => park.id === el.id) // find the park in rideAttributes that the loop is currently on in waitTimes
+
     const newRides = park.rides.map((ride) => { // Loop through the rides from waitTimes of each park
-      const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id) // Find the ride in the current park that matches the ride in waitTimes ride
-      const currentRideAttributes = attributeRide.attributes
-      return{
+      let currentRideAttributes = []
+      if(attributePark){
+        const attributeRide = attributePark.rides.find(rideEl => ride.id === rideEl.id) // Find the ride in the current park that matches the ride in waitTimes ride
+        if(attributeRide){
+          currentRideAttributes = attributeRide.attributes
+        }
+      }
+
+      return  {
         id: ride.id,
         name: ride.name,
         is_open: ride.is_open,
