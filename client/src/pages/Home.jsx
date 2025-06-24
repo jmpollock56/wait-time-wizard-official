@@ -5,6 +5,7 @@ export default function Home(){
         <>
             <InformationSection />
             <LandingContent />
+            <div className="full-width"></div>
         </>
         
     )

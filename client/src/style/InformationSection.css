@@ -42,6 +42,12 @@
   width: fit-content;
 }
 
+.call-to-action:hover{
+  background-color: var(--bg);
+  color: var(--text-standard);
+  border: 1px solid var(--text-standard);
+}
+
 .mobile{
   display: block;
 }
