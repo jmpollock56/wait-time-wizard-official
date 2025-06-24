@@ -11,6 +11,7 @@
   font-size: 1.125rem;
   padding: 20px;
   flex-wrap: wrap;
+  
 }
 
 .info-header{
@@ -35,17 +36,23 @@
 
 .call-to-action{
   text-decoration: none;
-  background-color: var(--text-standard);
+  background-color: var(--text);
   border-radius: 10px;
   color: var(--bg);
   padding: 10px;
   width: fit-content;
 }
 
+.call-to-action-border{
+  border: 1px solid transparent;
+  display: block;
+}
+
 .call-to-action:hover{
   background-color: var(--bg);
-  color: var(--text-standard);
-  border: 1px solid var(--text-standard);
+  color: var(--text);
+  border: 1px solid var(--text);
+  transform: translateY(-4px);
 }
 
 .mobile{
@@ -58,10 +65,10 @@
   }
  
  .info-div{
-    text-align: center;
     display: flex;
-    flex-direction: column;
+    text-align: center;
     align-items: center;
+    flex-direction: column;
     z-index: 1;
     padding: 20px;
     height: 50%;
@@ -74,7 +81,7 @@
     
  }
  .info-sec{
-  padding: 0;
+    padding: 0;
  }
 
 }

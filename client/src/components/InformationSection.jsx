@@ -26,10 +26,10 @@ export default function InformationSection() {
           of friendly wand-wavers, our mystical guide ensures you spend less 
           time waiting, and more time wandering the wonder.        
         </p>
-        <Link to={'/wait-times'} className="call-to-action">Conjure Wait Times</Link>
+        <Link to={'/wait-times'} className="call-to-action call-to-action-border">Conjure Wait Times</Link>
       </div>
     
-      <img src='/hero-image.jpg' className="hero-img"/>
+      <img src='/hero-image.jpg' className="hero-img mobile"/>
     </section>
   );
 }
