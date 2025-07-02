@@ -29,7 +29,7 @@ export default function WaitTimePanel({ ride }) {
     
   },[ride])
 
-  console.log(ride)
+
   return (
     <div className='ride-card-normal'>
 

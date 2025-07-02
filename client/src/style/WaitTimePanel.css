@@ -1,33 +1,34 @@
   .ride-card-normal {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
     align-items: center;
     border-radius: 10px;
-    padding: 10px;
     background-color: var(--panel-bg);
     position: relative;
     overflow: hidden;
     color: var(--text-standard);
-    width: 45%;
+    width: 49%;
     min-height: 50px;
-    height: 5%;
+    height: 200px;
     flex-wrap: wrap;
     cursor: pointer;
+    border: 1px solid var(--primary);
   }
 
 
   .ride-info {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 10px;
-    min-width: 200px;
+    justify-content: center;
+    gap: 20px;
+    width: 60%;
+    height: 100%;
   }
 
   .ride-name {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;  
   }
 
   .tags {
@@ -39,11 +40,12 @@
 
   .tag {
     background-color: var(--highlight);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-muted);
     border-radius: 9999px;
     padding: 4px 10px;
     font-size: 0.75em;
-    backdrop-filter: blur(3px);
+    color: var(--text-standard);
+    
   }
 
   .wait-time {
@@ -52,7 +54,15 @@
   }
 
  
+@media (max-width: 1000px) {
+  .ride-name{
+    font-size: 1rem;
+  }
 
+  .tags{
+    display: none;
+  }
+}
  
 
  
