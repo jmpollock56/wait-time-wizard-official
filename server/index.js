@@ -69,7 +69,8 @@ setInterval(async () => {
   const ts = timestamp()
   console.log(`${ts} ---- Wait Times Updated`)
   const newWaitTimes = await getWaitTimes()
-  io.emit('update-wait-times', newWaitTimes)
+  const newFullWaitTimes = await addAttributes(newWaitTimes)
+  io.emit('update-wait-times', newFullWaitTimes)
 }, 300000)
   
 server.listen(3000, () => {

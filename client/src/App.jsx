@@ -67,11 +67,12 @@ function App() {
      * Needs to update selectedPark(s!!!) instead of selectedPark.
      * !!!!!!
      */
-    socket.on("update-wait-times", (newWaitTimes) => {
+    socket.on("update-wait-times", (newFullWaitTimes) => {
       console.log("---- socket update -----");
-      setWaitTimes(newWaitTimes)
+      setWaitTimes(newFullWaitTimes)
     
-      const updatedSelectedParks = waitTimes.filter(park => selectedParks.includes(park))
+      const selectedIds = selectedParks.map(park => park.id)
+      const updatedSelectedParks = waitTimes.filter(park => selectedIds.includes(park.id))
       console.log(updatedSelectedParks, 'updatedSelectedParks')
       setSelectedParks(updatedSelectedParks)
       
@@ -82,9 +83,7 @@ function App() {
       socket.off("update-wait-times");
     };
   }, [selectedParks]);
-  
-  console.log(waitTimes)
-
+  console.log(selectedParks)
   useEffect(() => {
     console.log("attribute fire");
     if (activeAttributes.length === 0) {
