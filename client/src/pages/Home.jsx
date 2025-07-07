@@ -4,8 +4,8 @@ export default function Home(){
     return (
         <>
             <InformationSection />
-            <LandingContent />
-            <div className="full-width"></div>
+            
+            
         </>
         
     )

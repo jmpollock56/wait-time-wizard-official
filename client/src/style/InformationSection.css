@@ -52,7 +52,7 @@
   background-color: var(--bg);
   color: var(--text);
   border: 1px solid var(--text);
-  transform: translateY(-4px);
+  transform: scale(105%);
 }
 
 .mobile{
