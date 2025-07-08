@@ -52,7 +52,7 @@ function App() {
     const fetchWaitTimes = async () => {
       try {
         console.log("----- Fetching Wait Times -----");
-        const response = await fetch("http://localhost:3000/");
+        const response = await fetch("https://wait-time-wizard-backend.vercel.app/");
         const data = await response.json();
         setWaitTimes(data);
       } catch (error) {
