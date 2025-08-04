@@ -34,7 +34,7 @@ export default function WaitTimePanel({ ride }) {
     <div className='ride-card-normal'>
 
       <div className="ride-info">
-        <div className="ride-name">{`${ride.name} (${ride.initial})`}</div>
+        <div className="ride-name">{ride.name}</div>
         <div className="tags">
           {(ride.attributes) && ride.attributes.map((att, i) => {
             return <div className="tag" key={i}>{att.name}</div>
