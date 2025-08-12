@@ -3,39 +3,41 @@
     justify-content: space-between;
     padding: 20px;
     align-items: center;
-    border-radius: 10px;
-    background-color: var(--panel-bg);
+    border-radius: 10px;  
+    background-color: #fff;
     position: relative;
     overflow: hidden;
-    color: var(--text-standard);
-    width: 49%;
-    min-height: 50px;
-    height: 150px;
+    color: var(--bg);
+    width: 35%;
+    min-height: 70px;
+    height: 200px;
     flex-wrap: wrap;
     cursor: pointer;
-    border: 1px solid var(--primary);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
 
   .ride-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-evenly;
     width: 70%;
     height: 100%;
   }
 
   .park-name{
     font-size: 12px;
+
   }
 
   .ride-name {
     font-size: 1.2em;
-    font-weight: bold;  
+    font-weight: 500; 
+    /*
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    */
   }
 
   .tags {
@@ -46,13 +48,11 @@
   }
 
   .tag {
-    background-color: var(--highlight);
-    border: 1px solid var(--border-muted);
     border-radius: 9999px;
     padding: 4px 10px;
     font-size: 0.75em;
-    color: var(--text-standard);
-    
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   .wait-time {
