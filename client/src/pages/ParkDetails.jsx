@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import '../style/ParkDetails.css';
 
 export default function ParkDetails() {
   const [rides, setRides] = useState([]);
   const [parkName, setParkName] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const { id } = useParams();
 
   useEffect(() => {
@@ -33,6 +35,41 @@ export default function ParkDetails() {
     fetchRideData();
   }, [id]);
 
+  const sortData = (rides) => {
+    if (!sortConfig.key) return rides;
+
+    return [...rides].sort((a, b) => {
+      if (sortConfig.key === 'wait_time') {
+        return sortConfig.direction === 'ascending' 
+          ? a.wait_time - b.wait_time 
+          : b.wait_time - a.wait_time;
+      }
+      if (sortConfig.key === 'is_open') {
+        return sortConfig.direction === 'ascending'
+          ? (a.is_open === b.is_open ? 0 : a.is_open ? -1 : 1)
+          : (a.is_open === b.is_open ? 0 : a.is_open ? 1 : -1);
+      }
+      // Sort by name
+      return sortConfig.direction === 'ascending'
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    });
+  };
+
+  const requestSort = (key) => {
+    setSortConfig((prev) => ({
+      key,
+      direction: prev.key === key && prev.direction === 'ascending' 
+        ? 'descending' 
+        : 'ascending',
+    }));
+  };
+
+  const getSortIcon = (key) => {
+    if (sortConfig.key !== key) return '↕️';
+    return sortConfig.direction === 'ascending' ? '↑' : '↓';
+  };
+
   return (
     <div className="park-details">
       <h1>{parkName || 'Loading...'}</h1>
@@ -40,9 +77,15 @@ export default function ParkDetails() {
         <table className="rides-table">
           <thead>
             <tr>
-              <th>Ride Name</th>
-              <th>Status</th>
-              <th>Wait Time</th>
+              <th onClick={() => requestSort('name')} className="sortable">
+                Ride Name {getSortIcon('name')}
+              </th>
+              <th onClick={() => requestSort('is_open')} className="sortable">
+                Status {getSortIcon('is_open')}
+              </th>
+              <th onClick={() => requestSort('wait_time')} className="sortable">
+                Wait Time {getSortIcon('wait_time')}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +99,7 @@ export default function ParkDetails() {
                 </td>
               </tr>
             ) : (
-              rides.map((ride) => (
+              sortData(rides).map((ride) => (
                 <tr key={ride.id || Math.random()}>
                   <td className="ride-name">{ride.name || 'Unknown Ride'}</td>
                   <td>

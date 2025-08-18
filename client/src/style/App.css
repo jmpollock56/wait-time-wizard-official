@@ -37,6 +37,10 @@ main {
 header {
   background-color: #1a1a2e;
   color: #f5f6fc;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  width: 100%;
 }
 
 nav {
