@@ -1,0 +1,148 @@
+.park-details {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.park-details h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--panel-bg);
+}
+
+.table-container {
+  overflow-x: auto;
+  background: linear-gradient(to right, white 30%, rgba(255, 255, 255, 0)),
+              linear-gradient(to right, rgba(255, 255, 255, 0), white 70%) 0 100%,
+              radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+              radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+  background-position: 0 0, 100%, 0 0, 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.rides-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rides-table th,
+.rides-table td {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.rides-table th {
+  background-color: var(--panel-bg);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+}
+
+.rides-table tr {
+  transition: background-color 0.2s ease;
+}
+
+.rides-table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.rides-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.rides-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rides-table tr:last-child td {
+  border-bottom: none;
+}
+
+.status {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  display: inline-block;
+  font-size: 0.875rem;
+}
+
+.status.open {
+  color: #15803d;
+  background-color: #dcfce7;
+}
+
+.status.closed {
+  color: #991b1b;
+  background-color: #fee2e2;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state small {
+  color: #9ca3af;
+}
+
+.ride-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.wait-time {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.wait-time .time {
+  font-weight: 600;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.wait-time .unit {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-left: 0.25rem;
+}
+
+.wait-time .na {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+
+.no-rides {
+  text-align: center;
+  padding: 2rem !important;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .park-details {
+    padding: 1rem;
+  }
+  
+  .rides-table th,
+  .rides-table td {
+    padding: 0.75rem;
+  }
+}
