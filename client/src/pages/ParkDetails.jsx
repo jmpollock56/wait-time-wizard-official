@@ -10,6 +10,7 @@ export default function ParkDetails() {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const { id } = useParams();
   const { pathname } = useLocation();
+  const liveBackend = 'https://wait-time-wizard-backend.vercel.app/'
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +20,7 @@ export default function ParkDetails() {
     const fetchRideData = async () => {
       try {
         console.log('Fetching data for park ID:', id);
-        const response = await fetch(`http://localhost:3000/api/parks/${id}`);
+        const response = await fetch(`${liveBackend}api/parks/${id}`);
         const data = await response.json();
         console.log('API Response:', data);
 
