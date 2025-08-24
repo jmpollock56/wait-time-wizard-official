@@ -1,17 +1,17 @@
-
 export async function getWaitTimes(parkId) {
   try {
-    
+    const parkName = await getParkName(parkId);
+
     const response = await fetch(
       `https://queue-times.com/parks/${parkId}/queue_times.json`
     );
 
     if (!response.ok) {
-      throw new Error('Failed to fetch park data');
+      throw new Error("Failed to fetch park data");
     }
 
     const data = await response.json();
-  
+
     let rides = [];
 
     if (data.lands && data.lands.length > 0) {
@@ -28,11 +28,10 @@ export async function getWaitTimes(parkId) {
     }
 
     return {
-      name: data.name,
-      rides: rides
+      name: parkName,
+      rides: rides,
     };
-
-  } catch (error) { 
+  } catch (error) {
     console.error("Error fetching wait times:", error);
     throw error;
   }
@@ -40,9 +39,9 @@ export async function getWaitTimes(parkId) {
 
 export async function getParks() {
   try {
-    const parkResponse = await fetch('https://queue-times.com/parks.json');
+    const parkResponse = await fetch("https://queue-times.com/parks.json");
 
-    if(parkResponse.ok){
+    if (parkResponse.ok) {
       const parkData = await parkResponse.json();
       return parkData;
     }
@@ -51,13 +50,27 @@ export async function getParks() {
   }
 }
 
-/**
- * Parses the wait time data into just showing the rides instead of being segmented into
- * their specific lands.
- *
- * land = land object
- */
-async function parseWaitTimes(land) {
-  const rides = await land.rides.map((ride) => ride);
-  return rides;
+export async function getParkName(id) {
+  try {
+    const parkResponse = await fetch("https://queue-times.com/parks.json");
+
+    if (parkResponse.ok) {
+      const parkData = await parkResponse.json();
+      
+      
+      for (const company of parkData) {
+        const foundPark = company.parks.find(park => park.id === parseInt(id));
+        
+        if (foundPark) {
+          console.log('Found Park:', foundPark.name);
+          return foundPark.name;
+        }
+      }
+      
+      return 'Unknown Park';
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+    return 'Unknown Park';
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import App from './App.jsx'
 import ParkDetails from './pages/ParkDetails.jsx'
 import Header from './components/Header.jsx'
@@ -9,7 +9,7 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <App />
+      <Outlet />
     </div>
   )
 }
@@ -18,10 +18,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-  },
-  {
-    path: "/park/:id",
-    element: <ParkDetails />
+    children: [ 
+      {
+        index: true,
+        element: <App />
+      },
+      {
+        path: "/park/:id",
+        element: <ParkDetails />
+      }
+    ]
   }
 ])
 

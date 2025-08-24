@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
+
 export default function Header() {
+
+
   return (
     <header>
       <nav>
-        <div className="site-branding">Wait Time Wizard</div>
+        <Link to={'/'} className="site-branding">Wait Time Wizard</Link>
         <div className="park-options">
-          Parks <span>+</span>
+          Info
         </div>
       </nav>
     </header>

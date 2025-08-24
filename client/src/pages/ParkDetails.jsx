@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
+import { useParams, useLocation } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import '../style/ParkDetails.css';
 
 export default function ParkDetails() {
@@ -8,6 +9,11 @@ export default function ParkDetails() {
   const [parkName, setParkName] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const { id } = useParams();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const fetchRideData = async () => {
@@ -18,6 +24,7 @@ export default function ParkDetails() {
         console.log('API Response:', data);
 
         if (data) {
+          
           setRides(data.rides);
           setParkName(data.name);
         } else {
@@ -72,7 +79,7 @@ export default function ParkDetails() {
 
   return (
     <div className="park-details">
-      <h1>{parkName || 'Loading...'}</h1>
+      <h1>{parkName || <Skeleton baseColor='var(--panel-bg)' highlightColor='#1a1a2e' width='20%'/>}</h1>
       <div className="table-container">
         <table className="rides-table">
           <thead>
