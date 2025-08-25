@@ -42,6 +42,8 @@ export default function About() {
 
       <h3>Special Thanks</h3>
 
+
+
       <p>
         I graduated with a degree in Software Development and have been working
         on this idea ever since. I realize that this is not the first and won't
