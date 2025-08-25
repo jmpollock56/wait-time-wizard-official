@@ -7,7 +7,7 @@ import '../style/ParkDetails.css';
 export default function ParkDetails() {
   const [rides, setRides] = useState([]);
   const [parkName, setParkName] = useState('');
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'wait_time', direction: 'descending' });
   const { id } = useParams();
   const { pathname } = useLocation();
   const liveBackend = 'https://wait-time-wizard-backend.vercel.app/'
@@ -80,7 +80,7 @@ export default function ParkDetails() {
 
   return (
     <div className="park-details">
-      <h1>{parkName || <Skeleton baseColor='var(--panel-bg)' highlightColor='#1a1a2e' width='20%'/>}</h1>
+      <h1>{parkName || <Skeleton baseColor='black'/>}</h1>
       <div className="table-container">
         <table className="rides-table">
           <thead>

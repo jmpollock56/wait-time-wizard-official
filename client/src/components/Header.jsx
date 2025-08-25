@@ -7,9 +7,7 @@ export default function Header() {
     <header>
       <nav>
         <Link to={'/'} className="site-branding">Wait Time Wizard</Link>
-        <div className="park-options">
-          Info
-        </div>
+        <Link to={'/about'} className="about-link">About</Link>
       </nav>
     </header>
   );

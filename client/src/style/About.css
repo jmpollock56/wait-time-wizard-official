@@ -1,0 +1,9 @@
+.about-container {
+  margin-top: 40px;
+  padding: 2rem;
+  color: #363636;
+} 
+
+p {
+  line-height: 2;
+}
